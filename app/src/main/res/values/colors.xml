@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#284686</color>
+    <color name="purple_500">#284686</color>
+    <color name="purple_700">#284686</color>
+    <color name="teal_200">#284686</color>
+    <color name="teal_700">#284686</color>
+    <color name="black">#FF000000</color>
+    <color name="alphaBlack">#BF000000</color>
+    <color name="alphaBlack2">#79000000</color>
+    <color name="color">#F72196F3</color>
+
+    <color name="white">#f9fbfb</color>
+    <color name="white_">#ffff</color>
+    <color name="white_2">#eeee</color>
+
+    <color name="whiteLight">#9AFFFFFF</color>
+    <color name="whiteLight_">#5CA39F9F</color>
+
+    <color name="alphaWhite">#d1d5e3</color>
+    <color name="no_color">#02F7E53B</color>
+    <color name="yellow">#284686</color>
+    <color name="alpha_yellow">#284686</color>
+    <color name="alpha_yellows">#573F5793</color>
+    <color name="alpha_yellow2">#02F7E53B</color>
+    <color name="yellows">#f7e53b</color>
+    <color name="newBlue">#546c9c</color>
+    <color name="orange">#ecb41b</color>
+
+    <array name="array_dot_active">
+        <item>@color/yellow</item>
+        <item>@color/yellow</item>
+    </array>
+<!--    A4000000-->
+    <array name="array_dot_inactive">
+        <item>@color/white</item>
+        <item>@color/white</item>
+    </array>
+</resources>

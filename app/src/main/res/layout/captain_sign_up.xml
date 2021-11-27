@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/car4"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/alpha_background2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="2dp">
+
+
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_marginStart="2dp"-->
+            <!--                android:layout_marginTop="2dp"-->
+            <!--                android:layout_marginEnd="2dp"-->
+            <!--                android:layout_marginBottom="2dp"-->
+            <!--                android:layout_weight="1.5"-->
+            <!--                android:elevation="@dimen/cardview_default_elevation"-->
+            <!--                app:cardBackgroundColor="@color/white"-->
+            <!--                app:cardCornerRadius="30dp"-->
+            <!--                app:cardElevation="30dp">-->
+
+            <LinearLayout
+                android:id="@+id/log_linear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutDirection="locale"
+                android:orientation="vertical">
+
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/log_in"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textSize="25sp" />-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/yellow"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:padding="5dp"
+                    android:text="Sign Up "
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/linear_1Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circ"
+                        android:padding="10dp"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bac_green"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/alpha_yellow"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/linear_2Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bac_search"
+                        android:padding="10dp"
+                        android:text="2"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bac_green"
+
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/alpha_yellow"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/linear_22Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bac_search"
+                        android:padding="10dp"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bac_green"
+
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/alpha_yellow"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/linear_3Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bac_search"
+                        android:padding="10dp"
+                        android:text="4"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bac_green"
+
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/alpha_yellow"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/linear_4Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bac_search"
+                        android:padding="10dp"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="0"-->
+                <!--                        android:fontFamily="casual"-->
+                <!--                        android:gravity="center"-->
+
+                <!--                        android:textAlignment="center"-->
+                <!--                        android:textColor="@color/alpha_green"-->
+                <!--                        android:textSize="16sp" />-->
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bac_green_curv"
+                    android:orientation="vertical">
+
+                    <!--                        <androidx.cardview.widget.CardView-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_margin="9dp"-->
+                    <!--                            app:cardBackgroundColor="@color/white"-->
+                    <!--                            app:cardCornerRadius="6dp">-->
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="Enter Phone No ."
+                            android:textColor="@color/black"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="Phone No Use For communication with other"
+                            android:textColor="@color/yellow"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                                android:id="@+id/CantryNo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_sin"
+                                android:gravity="center"
+                                android:padding="15dp"
+                                app:ccp_defaultNameCode="JO"
+                                app:ccp_hideNameCode="true"
+                                app:ccp_showFlag="true"
+                                app:ccp_textSize="12sp" />
+
+
+                            <EditText
+                                android:id="@+id/phoneNo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/button_sin"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:hint=" 7xxxxxxxx"
+                                android:inputType="number"
+                                android:maxLength="9"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/alphaBlack" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <Button
+                                android:id="@+id/linear_1_next"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/layout_yello"
+                                android:text="next"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="10dp"
+                            android:text="Enter Code ."
+                            android:textColor="@color/black"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="the code send to Phone No (0792485654) "
+                            android:textColor="@color/yellow"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <EditText
+                                android:id="@+id/codeT_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_sin"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/yellow" />
+
+                            <EditText
+                                android:id="@+id/codeT_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_sin"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/alpha_yellow" />
+
+                            <EditText
+                                android:id="@+id/codeT_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_sin"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/alpha_yellow" />
+
+                            <EditText
+                                android:id="@+id/codeT_4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_sin"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/alpha_yellow" />
+
+                            <EditText
+                                android:id="@+id/codeT_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_sin"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/alpha_yellow" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <Button
+                                android:id="@+id/linear_2_next"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/layout_yello"
+                                android:text="next"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_22"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="Enter  Name ."
+                            android:textColor="@color/black"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="please Enter Name  "
+                            android:textColor="@color/yellow"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/userName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_sin"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/yellow" />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="Enter Password ."
+                            android:textColor="@color/black"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="please Enter Password  "
+                            android:textColor="@color/yellow"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/button_sin"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/yellow" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <Button
+                                android:id="@+id/linear_22_next"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/layout_yello"
+                                android:text="next"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="Upload الوثائق المطلوبة"
+                            android:textColor="@color/black"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:padding="5dp"
+                            android:text="Please the image only Png or Jpg"
+                            android:textColor="@color/yellow"
+                            android:textSize="14sp" />
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="  الصورة الشخصية "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage1"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="صورة عن الهوية الشخصية "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage2"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="صورة عن رخصة القيادة "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage3"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="صورة عن التصريح الامني لسائق الفئة العمومية "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage4"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="صورة عن رخصة المركبة "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage5"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="صورة عن وصل ايداع نقدي بقيمة 300 دينار "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage6"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="صورة عن وصل ايداع نقدي بقيمة 50دينار "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage7"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="صورة عن شهادة صحية - خلو امراض "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage8"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="5dp"
+
+                                    android:elevation="25dp"
+                                    android:gravity="center|end"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:text="صورة عن شهادة عدم محكومية "
+                                        android:textColor="@color/yellow"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:id="@+id/YourPicImage9"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="0"
+                                        app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                                        tools:ignore="VectorDrawableCompat" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </ScrollView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="0"
+                            android:gravity="bottom|center"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <Button
+                                android:id="@+id/linear_3_next"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/layout_yello"
+                                android:text="@string/next"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <pl.droidsonroids.gif.GifImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/partys"
+                            app:civ_border_color="@color/yellow"
+                            app:civ_border_width="1dp" />
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Welcome Captain to valet Family"
+                            android:textColor="@color/yellow"
+                            android:textSize="30sp" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="bottom|center"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <Button
+                                android:id="@+id/linear_4_next"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/layout_yello"
+                                android:text="Go TO Log In "
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--                        </androidx.cardview.widget.CardView>-->
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--            </androidx.cardview.widget.CardView>-->
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
