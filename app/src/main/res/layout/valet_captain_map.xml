@@ -1,0 +1,2134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/car4"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/alpha_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:elevation="@dimen/cardview_default_elevation"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="30dp">
+
+                <LinearLayout
+                    android:id="@+id/log_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layoutDirection="locale"
+                    android:orientation="vertical"
+                    android:padding="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+                        android:layoutDirection="locale"
+                        android:orientation="vertical"
+                        android:padding="0dp">
+
+                        <fragment
+                            android:id="@+id/map"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:context=".MapsActivity" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+
+                                <LinearLayout
+                                    android:id="@+id/deleteLinear"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/alpha_background2"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
+
+                                    <TextView
+                                        android:id="@+id/textView5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:gravity="center"
+                                        android:text="Client Delete The Request "
+                                        android:textColor="@color/orange"
+                                        android:textSize="25sp" />
+
+                                    <TextView
+                                        android:id="@+id/textView3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:gravity="center"
+                                        android:text="Thank You For Your Efforts"
+                                        android:textColor="@color/white"
+                                        android:textSize="30sp" />
+
+                                    <Button
+                                        android:id="@+id/goneDeleteLin"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="20dp"
+                                        android:layout_weight="0"
+                                        android:background="@drawable/bac_green"
+                                        android:shadowColor="@color/yellow"
+                                        android:shadowDx="0"
+                                        android:shadowDy="8"
+                                        android:text="Ok"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_1DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.6"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/bac_green" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="1"
+                                                android:orientation="vertical">
+
+                                                <!--                                                <TextView-->
+                                                <!--                                                    android:id="@+id/textView8"-->
+                                                <!--                                                    android:layout_width="match_parent"-->
+                                                <!--                                                    android:layout_height="wrap_content"-->
+                                                <!--                                                    android:text="LatLng"-->
+                                                <!--                                                    android:textColor="@color/white"-->
+                                                <!--                                                    android:gravity="start|center"-->
+                                                <!--                                                    android:textStyle="bold"-->
+                                                <!--                                                    android:fontFamily="cursive"-->
+                                                <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="0"
+                                                    android:orientation="vertical">
+
+                                                    <TextView
+                                                        android:id="@+id/textView4"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:gravity="center"
+                                                        android:text="Orders List"
+                                                        android:textColor="@color/white"
+                                                        android:textSize="30dp" />
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:gravity="center"
+                                                        android:text="Please Select Order To Continue"
+                                                        android:textColor="@color/whiteLight"
+                                                        android:textSize="15dp" />
+
+                                                </LinearLayout>
+
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="1.2dp"
+                                                    android:layout_margin="10dp"
+                                                    android:background="@drawable/bac_green"
+                                                    android:backgroundTint="@color/white" />
+
+                                                <ListView
+                                                    android:id="@+id/orderList"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_weight="1" />
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <!--                                <LinearLayout-->
+                                    <!--                                    android:layout_width="match_parent"-->
+                                    <!--                                    android:layout_height="match_parent"-->
+                                    <!--                                    android:layout_weight="6"-->
+                                    <!--                                    android:orientation="horizontal"></LinearLayout>-->
+
+                                    <!--                                <Button-->
+                                    <!--                                    android:id="@+id/iNeedCaptain"-->
+                                    <!--                                    android:layout_width="match_parent"-->
+                                    <!--                                    android:layout_height="wrap_content"-->
+                                    <!--                                    android:background="@drawable/bac_green"-->
+                                    <!--                                    android:text="I NEED CAPTAIN"-->
+                                    <!--                                    android:shadowColor="@color/yellow"-->
+                                    <!--                                    android:shadowDx="0"-->
+                                    <!--                                    android:shadowDy="8"-->
+                                    <!--                                    android:layout_margin="5dp"-->
+                                    <!--                                    android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_2DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/bac_green"
+                                    android:backgroundTint="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="90dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/ff"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Please Wait"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:id="@+id/fromLoc1"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="35.165546/ 35.1545,"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/bac_green"
+                                                        android:backgroundTint="@color/white" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="9"
+                                        android:orientation="horizontal"></LinearLayout>
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/bac_green"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_3DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.30"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/bac_green"
+                                    android:backgroundTint="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="90dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/ff"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Tracking Client"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Please Captain Wait After Client Arrive"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/bac_green"
+                                                        android:backgroundTint="@color/white" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+                                        <!--                                        <Button-->
+                                        <!--                                            android:id="@+id/tracking"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_margin="5dp"-->
+                                        <!--                                            android:layout_weight="1"-->
+                                        <!--                                            android:background="@drawable/bac_green"-->
+                                        <!--                                            android:shadowColor="@color/yellow"-->
+                                        <!--                                            android:shadowDx="0"-->
+                                        <!--                                            android:shadowDy="8"-->
+                                        <!--                                            android:text="Tracking"-->
+                                        <!--                                            android:textColor="@color/black" />-->
+
+
+                                    </LinearLayout>
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/bac_green"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_151DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.2"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/bac_green"
+                                    android:backgroundTint="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="70dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/ff"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Client Arrive"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Please, Captain Receive The Client And Then  Click \n (CUSTOMER Arrive) "
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/bac_green"
+                                                        android:backgroundTint="@color/white" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+                                        <!--                                        <Button-->
+                                        <!--                                            android:id="@+id/tracking"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_margin="5dp"-->
+                                        <!--                                            android:layout_weight="1"-->
+                                        <!--                                            android:background="@drawable/bac_green"-->
+                                        <!--                                            android:shadowColor="@color/yellow"-->
+                                        <!--                                            android:shadowDx="0"-->
+                                        <!--                                            android:shadowDy="8"-->
+                                        <!--                                            android:text="Tracking"-->
+                                        <!--                                            android:textColor="@color/black" />-->
+                                        <Button
+                                            android:id="@+id/CUSTOMER_RECEIVED"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/bac_green"
+                                            android:backgroundTint="@color/white"
+                                            android:shadowColor="@color/yellow"
+                                            android:shadowDx="0"
+                                            android:shadowDy="8"
+                                            android:text="Show QR To My Customer"
+                                            android:textColor="@color/yellow" />
+
+                                    </LinearLayout>
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/bac_green"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_3StopDialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.30"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/textView2"
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/bac_green"
+                                    android:backgroundTint="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="70dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/ff"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Arrive Time"
+                                                            android:textColor="@color/alphaWhite"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Please Captain How Many Time Need For Arrive !!"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="match_parent"
+                                                            android:layout_weight="0"
+                                                            android:orientation="horizontal">
+
+                                                            <EditText
+                                                                android:id="@+id/hour"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_margin="5dp"
+                                                                android:layout_weight="1"
+                                                                android:background="@drawable/white"
+                                                                android:ems="10"
+                                                                android:gravity="center"
+                                                                android:hint="H"
+                                                                android:inputType="number"
+                                                                android:maxLength="2"
+                                                                android:nextFocusDown="@id/minut"
+                                                                android:textColorHint="@color/whiteLight" />
+
+                                                            <EditText
+                                                                android:id="@+id/minut"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_margin="5dp"
+                                                                android:layout_weight="1"
+                                                                android:background="@drawable/white"
+                                                                android:ems="10"
+                                                                android:gravity="center"
+                                                                android:hint="M"
+                                                                android:inputType="number"
+                                                                android:maxLength="2"
+
+                                                                android:nextFocusDown="@id/sec"
+                                                                android:textColorHint="@color/whiteLight" />
+
+                                                            <EditText
+                                                                android:id="@+id/sec"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_margin="5dp"
+                                                                android:layout_weight="1"
+                                                                android:background="@drawable/white"
+                                                                android:ems="10"
+                                                                android:gravity="center"
+                                                                android:hint="Sec"
+                                                                android:inputType="number"
+                                                                android:maxLength="2"
+                                                                android:textColorHint="@color/whiteLight" />
+                                                        </LinearLayout>
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/bac_green"
+                                                        android:backgroundTint="@color/white" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0"
+                                        android:orientation="horizontal">
+
+                                        <Button
+                                            android:id="@+id/arriveOk"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            android:layout_weight="0"
+                                            android:background="@drawable/bac_green"
+                                            android:backgroundTint="@color/white"
+                                            android:shadowColor="@color/yellow"
+                                            android:shadowDx="0"
+                                            android:shadowDy="8"
+                                            android:text="Ok"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/bac_green"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_4DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.30"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/layout_black" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="70dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/loader"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Go Captain"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Every Thing Is Okay Please Go To Client !!"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/layout_black"
+                                                        android:backgroundTint="@color/white" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0"
+                                        android:orientation="horizontal">
+
+                                        <Button
+                                            android:id="@+id/call_2"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/white"
+                                            android:drawableStart="@drawable/ic_baseline_call_24"
+                                            android:drawableLeft="@drawable/ic_baseline_call_24"
+                                            android:drawablePadding="5dp"
+                                            android:drawableTint="@color/white"
+                                            android:shadowColor="@color/white"
+                                            android:shadowDx="0"
+                                            android:shadowDy="8"
+                                            android:text="Call"
+                                            android:textColor="@color/white" />
+
+                                        <Button
+                                            android:id="@+id/direction"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/white"
+                                            android:drawableStart="@drawable/ic_baseline_directions_24"
+                                            android:drawableLeft="@drawable/ic_baseline_directions_24"
+                                            android:drawableTint="@color/white"
+                                            android:shadowColor="@color/white"
+                                            android:shadowDx="0"
+                                            android:shadowDy="8"
+                                            android:text="Direction"
+                                            android:textColor="@color/white" />
+
+                                        <Button
+                                            android:id="@+id/arriveToClient"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/bac_green"
+                                            android:backgroundTint="@color/white"
+                                            android:shadowColor="@color/yellow"
+                                            android:shadowDx="0"
+                                            android:shadowDy="8"
+                                            android:text="Arrive"
+                                            android:textColor="@color/yellow" />
+                                    </LinearLayout>
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/layout_black"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_5DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/layout_black"
+                                    android:backgroundTint="@color/white" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:gravity="center"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:gravity="center"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+
+                                                        <LinearLayout
+                                                            android:id="@+id/regenaratQr"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:background="@drawable/barcod"
+                                                            android:gravity="center"
+                                                            android:orientation="vertical">
+
+                                                            <TextView
+                                                                android:id="@+id/textView10"
+                                                                android:layout_width="100dp"
+                                                                android:layout_height="100dp"
+                                                                android:background="@drawable/bac_green"
+                                                                android:gravity="center"
+                                                                android:text="Click For ReGenerator QR"
+                                                                android:textColor="@color/yellow"
+                                                                android:textSize="15sp" />
+                                                        </LinearLayout>
+
+                                                        <ImageView
+                                                            android:id="@+id/barcode"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="150dp"
+                                                            android:visibility="gone" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_weight="0"
+                                                            android:gravity="center"
+                                                            android:text="QR Code"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Please Have The Client Scan  QR !!"
+                                                            android:textColor="@color/alphaWhite"
+                                                            android:textSize="15dp" />
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/layout_black"
+                                                        android:backgroundTint="@color/white" />
+
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <!--                                    <LinearLayout-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:layout_weight="0"-->
+                                    <!--                                        android:orientation="horizontal">-->
+
+                                    <!--                                        <Button-->
+                                    <!--                                            android:layout_width="match_parent"-->
+                                    <!--                                            android:layout_height="wrap_content"-->
+                                    <!--                                            android:layout_margin="5dp"-->
+                                    <!--                                            android:layout_weight="1"-->
+                                    <!--                                            android:background="@drawable/layout_black"-->
+                                    <!--                                            android:shadowColor="@color/yellow"-->
+                                    <!--                                            android:shadowDx="0"-->
+                                    <!--                                            android:shadowDy="8"-->
+                                    <!--                                            android:text="Scan QR"-->
+                                    <!--                                            android:textColor="@color/black" />-->
+                                    <!--                                    </LinearLayout>-->
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/layout_black"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_6DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/layout_black" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:gravity="center"
+                                                    android:orientation="vertical">
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="80dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/loader"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Parking Car"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Please Captain Parking Car  !!"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="BeCarfully Please  !!"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/layout_black"
+                                                        android:backgroundTint="@color/white" />
+
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0"
+                                        android:orientation="horizontal"
+                                        android:padding="5dp">
+
+                                        <Button
+                                            android:id="@+id/parkingCar"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="5dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/bac_green"
+                                            android:shadowColor="@color/yellow"
+                                            android:shadowDx="0"
+                                            android:shadowDy="8"
+                                            android:text="Finish Parking"
+                                            android:textColor="@color/yellow" />
+                                    </LinearLayout>
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/layout_black"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_8DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/layout_black" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="70dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/loader"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Go Captain"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Every Thing Is Okay Please Go To Client and Return Car !!"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/layout_black" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0"
+                                        android:orientation="vertical">
+
+                                        <Button
+                                            android:id="@+id/yourCarWay"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="10dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/white"
+                                            android:drawableTint="@color/yellow"
+                                            android:shadowColor="@color/yellow"
+                                            android:text="Your Car Is On The Way"
+                                            android:textColor="@color/white" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:orientation="horizontal"
+                                            android:padding="2dp">
+
+                                            <Button
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/white"
+                                                android:drawableStart="@drawable/ic_baseline_call_24"
+                                                android:drawableLeft="@drawable/ic_baseline_call_24"
+                                                android:drawablePadding="5dp"
+                                                android:drawableTint="@color/white"
+                                                android:shadowColor="@color/yellow"
+                                                android:shadowDx="0"
+                                                android:shadowDy="8"
+                                                android:text="Call"
+                                                android:textColor="@color/white" />
+
+                                            <Button
+                                                android:id="@+id/directionR"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/white"
+                                                android:drawableStart="@drawable/ic_baseline_directions_24"
+                                                android:drawableLeft="@drawable/ic_baseline_directions_24"
+                                                android:drawableTint="@color/white"
+                                                android:shadowColor="@color/yellow"
+                                                android:shadowDx="0"
+                                                android:shadowDy="8"
+                                                android:text="Direction"
+                                                android:textColor="@color/white" />
+
+                                            <Button
+                                                android:id="@+id/arriveToClientReturn"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/bac_green"
+                                                android:shadowColor="@color/yellow"
+                                                android:shadowDx="0"
+                                                android:shadowDy="8"
+                                                android:text="Arrive"
+                                                android:textColor="@color/yellow" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/layout_black"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_9DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.9"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/layout_black" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="150dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/scan"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text=" Scan QR Code"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Please Scan QR Code From Client"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/layout_black" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="9"
+                                        android:orientation="horizontal"></LinearLayout>
+
+                                    <Button
+                                        android:id="@+id/scanQRCode"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:background="@drawable/bac_green"
+                                        android:padding="5dp"
+                                        android:shadowColor="@color/yellow"
+                                        android:shadowDx="0"
+                                        android:shadowDy="8"
+                                        android:text="Scan QR"
+                                        android:textColor="@color/yellow" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_10DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/layout_black" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="90dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/ff"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Please Wait"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Please wait Until Client Finish From Pay Operation "
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/layout_black" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="9"
+                                        android:orientation="horizontal"></LinearLayout>
+
+                                    <!--                                    <Button-->
+                                    <!--                                        android:id="@+id/iNeedCaptain"-->
+                                    <!--                                        android:layout_width="match_parent"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:background="@drawable/layout_black"-->
+                                    <!--                                        android:text="I NEED CAPTAIN"-->
+                                    <!--                                        android:shadowColor="@color/yellow"-->
+                                    <!--                                        android:shadowDx="0"-->
+                                    <!--                                        android:shadowDy="8"-->
+                                    <!--                                        android:layout_margin="5dp"-->
+                                    <!--                                        android:textColor="@color/black" />-->
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/_11DialogLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.9"
+                                android:background="@drawable/bac_green_cu_black"
+                                android:elevation="10dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="50dp"
+                                    android:layout_height="3dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/layout_black" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom|center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        android:padding="5dp">
+
+                                        <!--                                        <de.hdodenhof.circleimageview.CircleImageView-->
+                                        <!--                                            android:id="@+id/profile_image"-->
+                                        <!--                                            android:layout_width="match_parent"-->
+                                        <!--                                            android:layout_height="wrap_content"-->
+                                        <!--                                            android:layout_weight="5"-->
+                                        <!--                                            android:src="@drawable/car4"-->
+                                        <!--                                            app:civ_border_color="@color/yellow"-->
+                                        <!--                                            app:civ_border_width="3dp" />-->
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:padding="5dp">
+
+                                            <ScrollView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="2">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:orientation="vertical">
+
+                                                    <!--                                                <TextView-->
+                                                    <!--                                                    android:id="@+id/textView8"-->
+                                                    <!--                                                    android:layout_width="match_parent"-->
+                                                    <!--                                                    android:layout_height="wrap_content"-->
+                                                    <!--                                                    android:text="LatLng"-->
+                                                    <!--                                                    android:textColor="@color/white"-->
+                                                    <!--                                                    android:gravity="start|center"-->
+                                                    <!--                                                    android:textStyle="bold"-->
+                                                    <!--                                                    android:fontFamily="cursive"-->
+                                                    <!--                                                    android:textSize="20dp"/>-->
+
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:padding="10dp">
+
+                                                        <pl.droidsonroids.gif.GifImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="150dp"
+                                                            android:layout_weight="0"
+                                                            android:src="@drawable/pay_card"
+                                                            app:civ_border_width="1dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:text="Please Confirm "
+                                                            android:textColor="@color/white"
+                                                            android:textSize="30dp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center"
+                                                            android:padding="5dp"
+                                                            android:text="Please Confirm The Payment Process By The Client"
+                                                            android:textColor="@color/whiteLight"
+                                                            android:textSize="15dp" />
+
+                                                    </LinearLayout>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="1.2dp"
+                                                        android:layout_margin="10dp"
+                                                        android:background="@drawable/layout_black" />
+
+                                                </LinearLayout>
+                                            </ScrollView>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="9"
+                                        android:orientation="horizontal"></LinearLayout>
+
+                                    <Button
+                                        android:id="@+id/confirm"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:background="@drawable/bac_green"
+                                        android:shadowColor="@color/yellow"
+                                        android:shadowDx="0"
+                                        android:shadowDy="8"
+                                        android:text="Confirm"
+                                        android:textColor="@color/yellow" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <com.polyak.iconswitch.IconSwitch
+                            android:id="@+id/iconSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            app:isw_active_tint_icon_left="#FFFFFF"
+                            app:isw_active_tint_icon_right="#FFFFFF"
+                            app:isw_background_color="@color/yellows"
+                            app:isw_default_selection="left"
+                            app:isw_icon_left="@drawable/ic_baseline_place_24"
+                            app:isw_icon_right="@drawable/ic_baseline_location_off_24"
+                            app:isw_icon_size="20dp"
+                            app:isw_inactive_tint_icon_left="#100A0A"
+                            app:isw_inactive_tint_icon_right="#100A0A"
+                            app:isw_thumb_color_left="#2196F3"
+                            app:isw_thumb_color_right="#5E5858">
+
+                        </com.polyak.iconswitch.IconSwitch>
+
+
+                        <LinearLayout
+                            android:id="@+id/linearReturn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/carReturn"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:background="@drawable/bac_green_cu_black"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Return List"
+                                    android:textColor="@color/white"
+                                    android:textSize="30dp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Please Select  To Continue"
+                                    android:textColor="@color/whiteLight"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="1.2dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/layout_black" />
+
+                            <ListView
+                                android:id="@+id/returnCar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/carReturn"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginBottom="3dp"
+                            android:background="@drawable/bac_green_curv_"
+                            android:orientation="vertical">
+
+                            <pl.droidsonroids.gif.GifImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:src="@drawable/loader"
+                                app:civ_border_width="1dp" />
+
+                            <TextView
+                                android:id="@+id/returnText"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:background="@color/no_color"
+                                android:clickable="false"
+                                android:gravity="center"
+                                android:text="Return \n (0)"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

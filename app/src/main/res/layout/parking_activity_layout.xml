@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/car4"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/_1DialogLocation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6"
+        android:background="@drawable/alpha_background2"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="3dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/layout_yello" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <!--                                                <TextView-->
+                        <!--                                                    android:id="@+id/textView8"-->
+                        <!--                                                    android:layout_width="match_parent"-->
+                        <!--                                                    android:layout_height="wrap_content"-->
+                        <!--                                                    android:text="LatLng"-->
+                        <!--                                                    android:textColor="@color/white"-->
+                        <!--                                                    android:gravity="start|center"-->
+                        <!--                                                    android:textStyle="bold"-->
+                        <!--                                                    android:fontFamily="cursive"-->
+                        <!--                                                    android:textSize="20dp"/>-->
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Parking List"
+                                android:textColor="@color/white"
+                                android:textSize="30dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="List Of All Cars In Parking  "
+                                android:textColor="@color/alphaWhite"
+                                android:textSize="15dp" />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1.2dp"
+                            android:layout_margin="10dp"
+                            android:layout_weight="0"
+                            android:background="@drawable/layout_yello" />
+
+                        <ListView
+                            android:id="@+id/parkingListView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/bac_green_curv" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="match_parent"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_weight="6"-->
+            <!--                                    android:orientation="horizontal"></LinearLayout>-->
+
+            <!--                                <Button-->
+            <!--                                    android:id="@+id/iNeedCaptain"-->
+            <!--                                    android:layout_width="match_parent"-->
+            <!--                                    android:layout_height="wrap_content"-->
+            <!--                                    android:background="@drawable/bac_green"-->
+            <!--                                    android:text="I NEED CAPTAIN"-->
+            <!--                                    android:shadowColor="@color/yellow"-->
+            <!--                                    android:shadowDx="0"-->
+            <!--                                    android:shadowDy="8"-->
+            <!--                                    android:layout_margin="5dp"-->
+            <!--                                    android:textColor="@color/black" />-->
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
