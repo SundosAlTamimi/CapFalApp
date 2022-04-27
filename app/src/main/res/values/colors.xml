@@ -20,12 +20,17 @@
     <color name="alphaWhite">#d1d5e3</color>
     <color name="no_color">#02F7E53B</color>
     <color name="yellow">#284686</color>
+    <color name="yellow_l">#A8284686</color>
+
     <color name="alpha_yellow">#284686</color>
     <color name="alpha_yellows">#573F5793</color>
     <color name="alpha_yellow2">#02F7E53B</color>
     <color name="yellows">#f7e53b</color>
+    <color name="yellows_l">#B7F7E53B</color>
+
     <color name="newBlue">#546c9c</color>
     <color name="orange">#ecb41b</color>
+    <color name="orange_l">#9FECB41B</color>
 
     <array name="array_dot_active">
         <item>@color/yellow</item>

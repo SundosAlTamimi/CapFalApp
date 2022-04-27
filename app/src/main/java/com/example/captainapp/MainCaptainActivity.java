@@ -1,7 +1,11 @@
 package com.example.captainapp;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import static com.example.captainapp.GlobalVairable.appActivate;
 import static com.example.captainapp.GlobalVairable.captainClientTransfers;
@@ -22,20 +27,26 @@ import static com.example.captainapp.GlobalVairable.singUpUserTableGlobal;
 
 import com.example.captainapp.Adapter.ListAdapterOrder;
 import com.example.captainapp.Json.ImportJson;
+import com.google.android.gms.maps.model.LatLng;
 import com.polyak.iconswitch.IconSwitch;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainCaptainActivity extends AppCompatActivity implements View.OnClickListener {
     private IconSwitch iconSwitch;
     LinearLayout mainLinear,goLinear,profileLinear,parkingList;
-    TextView activUser,userNameText;
+    TextView activUser,userNameText,complete;
     CaptainDatabase captainDatabase;
     String activity="0",ip="";
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     ImportJson importJson;
     CircleImageView carPicC;
     RatingBar ratingBar;
+    SweetAlertDialog swASingUp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +75,7 @@ public class MainCaptainActivity extends AppCompatActivity implements View.OnCli
         parkingList=findViewById(R.id.parkingList);
         ratingBar=findViewById(R.id.ratingBar);
         parkingList.setOnClickListener(this);
+        complete=findViewById(R.id.Complete);
         captainDatabase=new CaptainDatabase(MainCaptainActivity.this);
         activity=captainDatabase.getAllActivitySetting();
         ip=captainDatabase.getAllIPSetting();
@@ -91,7 +103,7 @@ importJson=new ImportJson(MainCaptainActivity.this);
         }
 
         ratingBar.setFocusable(false);
-
+importJson.getComplete();
 //        iconSwitch.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -188,10 +200,71 @@ importJson=new ImportJson(MainCaptainActivity.this);
 
 
     void goToCap(){
-        Intent intent=new Intent(MainCaptainActivity.this,CaptainMapsActivity.class);
-        startActivity(intent);
+        getCorrectLoc();
     }
 
+    void getCorrectLoc(){
+
+        swASingUp = new SweetAlertDialog(MainCaptainActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+        swASingUp.getProgressHelper().setBarColor(Color.parseColor("#FDD835"));
+        swASingUp.setTitleText("Please Wait until get location " );
+        swASingUp.setCancelable(false);
+        swASingUp.show();
+        int isIn=5;
+//        for (int i=0;i<=isIn;i++) {
+            Location location = getLastKnownLocation();
+            try {
+              double  v1 = location.getLatitude();
+              double  v2 = location.getLongitude();
+
+                Log.e("loc12"," "+isIn);
+
+                Intent intent=new Intent(MainCaptainActivity.this,CaptainMapsActivity.class);
+                startActivity(intent);
+
+                swASingUp.dismissWithAnimation();
+                //isIn=i;
+//                break;
+            } catch (Exception e) {
+                isIn++;
+                Log.e("loc133", " " + isIn);
+                swASingUp.dismissWithAnimation();
+                SweetAlertDialog swASing_ = new SweetAlertDialog(MainCaptainActivity.this, SweetAlertDialog.WARNING_TYPE);
+                swASing_.getProgressHelper().setBarColor(Color.parseColor("#FDD835"));
+                swASing_.setTitleText("Please Try Again (Can not get Location)!!");
+                swASing_.setCancelable(true);
+                swASing_.show();
+
+//                if(isIn==1000) {
+//
+//                    Toast.makeText(MainCaptainActivity.this, "Can Not Get Location ", Toast.LENGTH_SHORT).show();
+//               swASingUp.dismissWithAnimation();
+////                break;
+//                }
+//            }
+        }
+
+    }
+
+    private Location getLastKnownLocation() {
+        Location l=null;
+        LocationManager mLocationManager = (LocationManager)getApplicationContext().getSystemService(LOCATION_SERVICE);
+        List<String> providers = mLocationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED) {
+                l = mLocationManager.getLastKnownLocation(provider);
+
+            }
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
+    }
 
 
     @Override
@@ -212,6 +285,9 @@ importJson=new ImportJson(MainCaptainActivity.this);
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+public void completeText(String noComp){
+        complete.setText(noComp);
+}
 
 public  void fillImage() {
         if(singUpUserTableGlobal.getPROFILE_PIC_Bitmap()!=null) {

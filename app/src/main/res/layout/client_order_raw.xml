@@ -50,7 +50,7 @@
                             android:padding="5dp"
                             android:src="@drawable/car4"
                             app:civ_border_color="@color/yellow"
-                            app:civ_border_width="1dp" />
+                            app:civ_border_width="4dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -71,15 +71,14 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="start|center"
                                 android:text="Client Name"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
+                                android:textColor="@color/black" />
 
                             <TextView
                                 android:id="@+id/clientName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="start|center"
-                                android:padding="5dp"
+                                android:padding="2dp"
                                 android:text="35.165546/ 35.1545"
                                 android:textColor="@color/yellow" />
 
@@ -96,15 +95,14 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="start|center"
                                 android:text="phone No"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
+                                android:textColor="@color/black" />
 
                             <TextView
                                 android:id="@+id/phoneNo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="start|center"
-                                android:padding="5dp"
+                                android:padding="2dp"
                                 android:text="35.165546/ 35.1545"
                                 android:textColor="@color/yellow" />
 
@@ -138,12 +136,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/layout_yello"
+                        android:background="@drawable/circ"
                         android:gravity="center"
                         android:padding="0dp"
                         android:text=" More Info ..."
                         android:textColor="@color/white"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -292,7 +290,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0.6dp"
-                    android:layout_margin="5dp"
                     android:layout_weight="0"
                     android:background="@drawable/bac_green"
                     android:gravity="center"
@@ -319,9 +316,10 @@
                             android:drawableStart="@drawable/ic_baseline_place_24"
                             android:drawableLeft="@drawable/ic_baseline_place_24"
                             android:gravity="start|center"
-                            android:padding="5dp"
+                            android:padding="2dp"
                             android:text="   From"
                             android:textColor="@color/yellow"
+                            android:drawableTint="@color/alpha_yellow"
                             android:textSize="16sp" />
 
                         <TextView
@@ -329,7 +327,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:padding="5dp"
+                            android:padding="2dp"
                             android:text="35.165546/ 35.1545"
                             android:textColor="@color/alpha_yellow" />
 
@@ -340,8 +338,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/main_lay_w"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView6"
@@ -350,8 +347,10 @@
                             android:drawableStart="@drawable/ic_baseline_location_searching_24"
                             android:drawableLeft="@drawable/ic_baseline_location_searching_24"
                             android:gravity="start|center"
+                            android:padding="2dp"
                             android:text="   To"
-                            android:textColor="@color/yellow"
+                            android:drawableTint="@color/orange"
+                            android:textColor="@color/orange"
                             android:textSize="16sp" />
 
                         <TextView

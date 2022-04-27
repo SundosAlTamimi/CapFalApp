@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_"
+    android:background="@drawable/car4"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,37 +12,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/bg_overlay"
         android:gravity="center"
         android:orientation="vertical">
 
 
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="15dp"-->
-<!--            android:layout_weight="1"-->
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="15dp"-->
+        <!--            android:layout_weight="1"-->
 
-<!--            app:cardBackgroundColor="@color/no_color"-->
-<!--            app:cardCornerRadius="30dp"-->
-<!--            app:cardElevation="30dp">-->
+        <!--            app:cardBackgroundColor="@color/no_color"-->
+        <!--            app:cardCornerRadius="30dp"-->
+        <!--            app:cardElevation="30dp">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                android:background="@drawable/bac_search"
-                android:gravity="center"
-                android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="@drawable/bac_search"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible">
 
-                <pl.droidsonroids.gif.GifImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:src="@drawable/hj"
-                    app:civ_border_width="1dp" />
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:src="@drawable/as"
+                android:visibility="gone"
+                app:civ_border_width="1dp" />
 
-            </LinearLayout>
-<!--        </androidx.cardview.widget.CardView>-->
+        </LinearLayout>
+        <!--        </androidx.cardview.widget.CardView>-->
 
 
         <LinearLayout
@@ -58,11 +61,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
                 android:layout_weight="0"
-                android:fontFamily="casual"
                 android:gravity="center"
                 android:text="{ Welcome To Captain App } "
-                android:textColor="@color/yellow"
-                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:textSize="30dp"
                 android:textStyle="bold" />
 
 
@@ -74,7 +76,7 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:text="parking Your Vehicle Smartly"
-                android:textColor="@color/alphaBlack2" />
+                android:textColor="@color/yellows" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,7 +86,7 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:text="Smart Parking Management Parking"
-                android:textColor="@color/alpha_yellow" />
+                android:textColor="@color/alphaWhite" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,8 +96,7 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:text="Solution at Your FingerPrint"
-                android:textColor="@color/alphaBlack2" />
-
+                android:textColor="@color/yellows" />
 
 
             <LinearLayout
@@ -105,6 +106,7 @@
                 android:gravity="center|bottom"
                 android:orientation="vertical"
                 android:padding="10dp">
+
                 <TextView
                     android:id="@+id/setting"
                     android:layout_width="wrap_content"
@@ -117,7 +119,7 @@
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Setting"
-                    android:textColor="@color/yellow"
+                    android:textColor="@color/yellows"
                     android:textSize="20dp"
                     android:visibility="visible" />
 
@@ -127,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:layout_weight="0"
-                    android:background="@drawable/circ"
+                    android:background="@drawable/layout_yello"
                     android:text="Sing In"
                     android:textColor="@color/white" />
 
@@ -138,9 +140,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:layout_weight="0"
-                    android:background="@drawable/bac_search"
+                    android:background="@drawable/bac_green"
                     android:text="Sing Up"
-                    android:textColor="@color/yellow" />
+                    android:textColor="@color/alpha_yellow" />
 
 
             </LinearLayout>

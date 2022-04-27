@@ -14,6 +14,8 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Criteria;
+import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -24,7 +26,6 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,7 +44,9 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.captainapp.Adapter.*;
 import com.example.captainapp.Json.ExportJson;
 import com.example.captainapp.Json.ImportJson;
+import com.example.captainapp.Model.CaptainClientTransfer;
 import com.example.captainapp.Model.ValetFireBaseItem;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -96,112 +99,158 @@ import static com.example.captainapp.GlobalVairable.singUpUserTableGlobal;
 public class CaptainMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    Button requestButton,scanQRCode,arriveOk,arriveToClient,parkingCar,direction,arriveToClientReturn,confirm,goneDeleteLin,directionR,
-    call_1,call_2,CUSTOMER_RECEIVED,yourCarWay;
+    Button requestButton, scanQRCode, arriveOk, arriveToClient, parkingCar, direction, arriveToClientReturn, confirm, goneDeleteLin, directionR,
+            call_1, call_2, CUSTOMER_RECEIVED, yourCarWay;
     public static List<LatLng> LatLngListMarker;
     private LatLngBounds.Builder builder;
     LatLngBounds bounds;
-    boolean flag=false;
+    boolean flag = false;
     Timer timer;
-    boolean getFlag=true,isStall=true;
-    double v1=31.951110, v2=35.917270,a1=0.0,a2=0.0;
+    List<CaptainClientTransfer> tempApp;
+
+    boolean getFlag = true, isStall = true;
+    double v1 = 31.951110, v2 = 35.917270, a1 = 0.0, a2 = 0.0;
+    boolean trackOn=false;
+//double v1=0.0, v2=0.0,a1=0.0,a2=0.0;
+
     SweetAlertDialog pdaSweet;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
-ListView orderList,returnCar;
+    ListView orderList, returnCar;
     ListAdapterOrder listAdapterOrder;
-    int flags=1;
+    int flags = 1;
     ListAdapterReturn listAdapterReturn;
-    LinearLayout _1DialogLocation,_2DialogLocation,_3DialogLocation,_4DialogLocation,_5DialogLocation,_6DialogLocation
-           ,_8DialogLocation,_9DialogLocation ,_10DialogLocation , _11DialogLocation,carReturn,linearReturn,_151DialogLocation,deleteLinear,regenaratQr;
+    LinearLayout _1DialogLocation, _2DialogLocation, _3DialogLocation, _4DialogLocation, _5DialogLocation, _6DialogLocation, _8DialogLocation, _9DialogLocation, _10DialogLocation, _11DialogLocation, carReturn, linearReturn, _151DialogLocation, deleteLinear, regenaratQr;
     ImportJson importJson;
     Timer T;
     CaptainDatabase captainDatabase;
     ExportJson exportJson;
-    EditText hour,min,sec;
+    EditText hour, min, sec;
     ImageView barcode;
     private static final int REQUEST_PHONE_CALL = 1;
     private final int MY_PERMISSIONS_REQUEST_USE_CAMERA = 0x00AF;
-    LocationManager locationManager ;
+    LocationManager locationManager;
     FirebaseDatabase db;
     DatabaseReference databaseReference;
     int randomNumber;
-   public static TextView returnText;
-String activity="";
-
+    public static TextView returnText;
+    String activity = "";
+    SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.valet_captain_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
         initialization();
+
         mapFragment.getMapAsync(this);
 
 
     }
 
     private void initialization() {
-        appActivate="2";
-       // requestButton=findViewById(R.id.requestButton);
+        appActivate = "2";
+        // requestButton=findViewById(R.id.requestButton);
 //        scanBarcode=findViewById(R.id.scanBarcode);
-     //  requestButton.setOnClickListener(onClickListener);
+        //  requestButton.setOnClickListener(onClickListener);
 //        scanBarcode.setOnClickListener(onClickListener);
 
 //        scanBarcode.setVisibility(View.GONE);
 //        requestButton.setVisibility(View.VISIBLE);
-        LatLngListMarker=new ArrayList<>();
+
+
+//        try {
+//            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+//        Criteria criteria = new Criteria();
+//
+//        String provider = locationManager.getBestProvider(criteria, true);
+//
+//
+//            String locationProvider = LocationManager.NETWORK_PROVIDER;
+//            // I suppressed the missing-permission warning because this wouldn't be executed in my
+//            // case without location services being enabled
+//            //  @SuppressLint("MissingPermission")
+//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                // TODO: Consider calling
+//                //    ActivityCompat#requestPermissions
+//                // here to request the missing permissions, and then overriding
+//                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//                //                                          int[] grantResults)
+//                // to handle the case where the user grants the permission. See the documentation
+//                // for ActivityCompat#requestPermissions for more details.
+//                return;
+//            }
+//         //   android.location.Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+//        Location location = locationManager.getLastKnownLocation(provider);
+////            try {
+////            v1 = location.getLatitude();
+////            v2 = location.getLongitude();
+////            } catch (Exception e) {
+//////                v1 = 31.951110;
+//////                v2 = 35.917270;
+////            }
+//
+////        }catch (Exception e){
+////            Log.e("LocationLanLag", "  Exception");
+////        }
+//
+
+
+        tempApp = new ArrayList();
+        LatLngListMarker = new ArrayList<>();
         LatLngListMarker.clear();
-        LatLng latLng=new LatLng(v1,v2);
+        LatLng latLng = new LatLng(v1, v2);
         LatLngListMarker.add(latLng);
         builder = new LatLngBounds.Builder();
-        orderList=findViewById(R.id.orderList);
-        _1DialogLocation=findViewById(R.id._1DialogLocation);
-        _2DialogLocation=findViewById(R.id._2DialogLocation);
-        _3DialogLocation=findViewById(R.id._3DialogLocation);
-        _4DialogLocation=findViewById(R.id._4DialogLocation);
-        _5DialogLocation=findViewById(R.id._5DialogLocation);
-        _6DialogLocation=findViewById(R.id._6DialogLocation);
-        _8DialogLocation=findViewById(R.id._8DialogLocation);
-        _9DialogLocation=findViewById(R.id._9DialogLocation);
-        _10DialogLocation=findViewById(R.id._10DialogLocation);//waite
-        _11DialogLocation=findViewById(R.id._11DialogLocation);//confirm
-        _151DialogLocation=findViewById(R.id._151DialogLocation);
-        regenaratQr=findViewById(R.id.regenaratQr);
+        orderList = findViewById(R.id.orderList);
+        _1DialogLocation = findViewById(R.id._1DialogLocation);
+        _2DialogLocation = findViewById(R.id._2DialogLocation);
+        _3DialogLocation = findViewById(R.id._3DialogLocation);
+        _4DialogLocation = findViewById(R.id._4DialogLocation);
+        _5DialogLocation = findViewById(R.id._5DialogLocation);
+        _6DialogLocation = findViewById(R.id._6DialogLocation);
+        _8DialogLocation = findViewById(R.id._8DialogLocation);
+        _9DialogLocation = findViewById(R.id._9DialogLocation);
+        _10DialogLocation = findViewById(R.id._10DialogLocation);//waite
+        _11DialogLocation = findViewById(R.id._11DialogLocation);//confirm
+        _151DialogLocation = findViewById(R.id._151DialogLocation);
+        regenaratQr = findViewById(R.id.regenaratQr);
         //call_1=findViewById(R.id.call_1);
-        call_2=findViewById(R.id.call_2);
-        returnText=findViewById(R.id.returnText);
-        CUSTOMER_RECEIVED=findViewById(R.id.CUSTOMER_RECEIVED);
-        goneDeleteLin=findViewById(R.id.goneDeleteLin);
-        directionR=findViewById(R.id.directionR);
-        arriveToClientReturn=findViewById(R.id.arriveToClientReturn);
-        scanQRCode=findViewById(R.id.scanQRCode);
-        hour=findViewById(R.id.hour);
-        min=findViewById(R.id.minut);
-        sec=findViewById(R.id.sec);
-        parkingCar=findViewById(R.id.parkingCar);
-        arriveToClient=findViewById(R.id.arriveToClient);
-        confirm=findViewById(R.id.confirm);
-        arriveOk=findViewById(R.id.arriveOk);
-        barcode=findViewById(R.id.barcode);
-        carReturn=findViewById(R.id.carReturn);
-        direction=findViewById(R.id.direction);
-        returnCar=findViewById(R.id.returnCar);
-        linearReturn=findViewById(R.id.linearReturn);
+        call_2 = findViewById(R.id.call_2);
+        returnText = findViewById(R.id.returnText);
+        CUSTOMER_RECEIVED = findViewById(R.id.CUSTOMER_RECEIVED);
+        goneDeleteLin = findViewById(R.id.goneDeleteLin);
+        directionR = findViewById(R.id.directionR);
+        arriveToClientReturn = findViewById(R.id.arriveToClientReturn);
+        scanQRCode = findViewById(R.id.scanQRCode);
+        hour = findViewById(R.id.hour);
+        min = findViewById(R.id.minut);
+        sec = findViewById(R.id.sec);
+        parkingCar = findViewById(R.id.parkingCar);
+        arriveToClient = findViewById(R.id.arriveToClient);
+        confirm = findViewById(R.id.confirm);
+        arriveOk = findViewById(R.id.arriveOk);
+        barcode = findViewById(R.id.barcode);
+        carReturn = findViewById(R.id.carReturn);
+        direction = findViewById(R.id.direction);
+        returnCar = findViewById(R.id.returnCar);
+        linearReturn = findViewById(R.id.linearReturn);
         linearReturn.setVisibility(View.GONE);
-        deleteLinear=findViewById(R.id.deleteLinear);
-        yourCarWay=findViewById(R.id.yourCarWay);
-        captainDatabase=new CaptainDatabase(CaptainMapsActivity.this);
+        deleteLinear = findViewById(R.id.deleteLinear);
+        yourCarWay = findViewById(R.id.yourCarWay);
+        captainDatabase = new CaptainDatabase(CaptainMapsActivity.this);
         listAvilable(0);
         listAdapterOrder = new ListAdapterOrder(CaptainMapsActivity.this, captainClientTransfers);
 
-        importJson=new ImportJson(CaptainMapsActivity.this);
+        importJson = new ImportJson(CaptainMapsActivity.this);
         //importJson.GetOrders();
 
-        exportJson=new ExportJson(CaptainMapsActivity.this);
+        exportJson = new ExportJson(CaptainMapsActivity.this);
 
-        importJson=new ImportJson(CaptainMapsActivity.this);
+        importJson = new ImportJson(CaptainMapsActivity.this);
 //        T = new Timer();
 //        T.schedule(new TimerTask() {
 //            @Override
@@ -215,39 +264,8 @@ String activity="";
 //        }, 0, 1000);
 
 
-
-        try {
-            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-            String locationProvider = LocationManager.NETWORK_PROVIDER;
-            // I suppressed the missing-permission warning because this wouldn't be executed in my
-            // case without location services being enabled
-            //  @SuppressLint("MissingPermission")
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
-            android.location.Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
-
-            try {
-                v1 = lastKnownLocation.getLatitude();
-                v2 = lastKnownLocation.getLongitude();
-            } catch (Exception e) {
-                v1 = 31.951110;
-                v2 = 35.917270;
-            }
-
-        }catch (Exception e){
-            Log.e("LocationLanLag", "  Exception");
-        }
-
         LatLngListMarker.clear();
-        LatLngListMarker.add(new LatLng(v1,v2));
+        LatLngListMarker.add(new LatLng(v1, v2));
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -260,7 +278,7 @@ String activity="";
         });
 
 
-        Query query3=databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child("INeedCaptain");
+        Query query3 = databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child("INeedCaptain");
 //        query2.
 
         ValueEventListener listener2 = new ValueEventListener() {
@@ -271,24 +289,24 @@ String activity="";
                     // String mychild = dataSnapshot.getValue().toString();
                     // textView.setText(mychild);
                     activity = captainDatabase.getAllActivitySetting();
-                    if (activity.equals("1")){
+                    if (activity.equals("1")) {
                         String mychild = dataSnapshot.getValue().toString();
 
-                    if (mychild.equals("1")) {
-                        String app = captainDatabase.getAllSetting();
-                        Log.e("dataGone", "" + app);
-                        if (TextUtils.isEmpty(app)) {
-                            Log.e("dataGone", "in  " + app);
+                        if (mychild.equals("1")) {
+                            String app = captainDatabase.getAllSetting();
+                            Log.e("dataGone", "" + app);
+                            if (TextUtils.isEmpty(app)) {
+                                Log.e("dataGone", "in  " + app);
 
-                            if (getFlag) {
-                                importJson.GetOrders();
+                                if (getFlag) {
+                                    importJson.GetOrders();
+                                }
                             }
                         }
                     }
-                }
-                  //  Toast.makeText(CaptainMapsActivity.this, "succ " + mychild, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(CaptainMapsActivity.this, "succ " + mychild, Toast.LENGTH_SHORT).show();
 
-                }catch (Exception y){
+                } catch (Exception y) {
 
                 }
             }
@@ -300,7 +318,7 @@ String activity="";
         query3.addValueEventListener(listener2);
 
 
-        Query query6=databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child("DeleteRequest");
+        Query query6 = databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child("DeleteRequest");
 //        query2.
 
         ValueEventListener listener6 = new ValueEventListener() {
@@ -316,7 +334,7 @@ String activity="";
                             importJson.getStatuss();
                         }
                     }
-                }catch (Exception y){
+                } catch (Exception y) {
 
                 }
             }
@@ -328,8 +346,40 @@ String activity="";
         query6.addValueEventListener(listener6);
 
 
+        //tracking
+//        Query query88 = databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child(clientId + "_LocationTracking");
+////        query2.
+//
+//        ValueEventListener listener88 = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                try {
+//                    activity = captainDatabase.getAllActivitySetting();
+//                    if (activity.equals("1")) {
+//                        String mychild = dataSnapshot.getValue().toString();
+//                        try {
+//                            if(trackOn){
+//                            String[] loc = locationClient();
+//                            String[] a = mychild.split("/");
+//                            trackingFire(a[0], a[1],loc[0],loc[1]);
+//                            }
+//                        }catch (Exception e){
+//                            Log.e("errorNoTracking","AppFireBase");
+//                        }
+//                    }
+//                } catch (Exception y) {
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        };
+//        query88.addValueEventListener(listener88);
 
-        Query query=databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child(singUpUserTableGlobal.getId()+"_VALET");
+        Query query = databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child(singUpUserTableGlobal.getId() + "_VALET");
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -343,12 +393,12 @@ String activity="";
 //                   ListShow(mychild.getStatus());
                         importJson.getStatuss();
                     }
-                  //  Toast.makeText(CaptainMapsActivity.this, "succ _VALET" + mychild, Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
-                    Log.e("dataGoneError ","hh");
-                 //   activity = captainDatabase.getAllActivitySetting();
+                    //  Toast.makeText(CaptainMapsActivity.this, "succ _VALET" + mychild, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Log.e("dataGoneError ", "hh");
+                    //   activity = captainDatabase.getAllActivitySetting();
 //                    if (activity.equals("1")) {
-                        importJson.GetOrders();
+                    importJson.GetOrders();
 //                    }
                 }
             }
@@ -360,72 +410,72 @@ String activity="";
         query.addValueEventListener(listener);
 
 
-        Query query61=databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child(singUpUserTableGlobal.getId()+"_LATE");
-//        query2.
+//        Query query61 = databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child(singUpUserTableGlobal.getId() + "_LATE");
+////        query2.
+//
+//        ValueEventListener listener61 = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                try {
+//                    activity = captainDatabase.getAllActivitySetting();
+//                    if (activity.equals("1")) {
+//                        String mychild = dataSnapshot.getValue().toString();
+//
+//
+//                        if (!mychild.equals("-1")) {
+//                            String[] a = mychild.split("/");
+//                            Intent intent = new Intent(CaptainMapsActivity.this, CaptainMapsActivity.class);
+//                            showNotification(CaptainMapsActivity.this, "Captain App \n You Are Late  ", "Ms/Mr (" + a[1] + ")  Note {" + a[0] + "} ", intent);
+//
+//                            writeInFireBaseCaptainLate();
+//                        }
+//                    }
+//                } catch (Exception y) {
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        };
+//        query61.addValueEventListener(listener61);
 
-        ValueEventListener listener61 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                try {
-                    activity = captainDatabase.getAllActivitySetting();
-                    if (activity.equals("1")) {
-                        String mychild = dataSnapshot.getValue().toString();
-
-
-                        if (!mychild.equals("-1")) {
-                            String[] a = mychild.split("/");
-                            Intent intent = new Intent(CaptainMapsActivity.this, CaptainMapsActivity.class);
-                            showNotification(CaptainMapsActivity.this, "Captain App \n You Are Late  ", "Ms/Mr (" + a[1] + ")  Note {" + a[0] + "} ", intent);
-
-                            writeInFireBaseCaptainLate();
-                        }
-                    }
-                }catch (Exception y){
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        };
-        query61.addValueEventListener(listener61);
-
-
-        Query query5=databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child(singUpUserTableGlobal.getId()+"_VALET").child("ifReturn");
-
-        ValueEventListener listener5 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                try {
-                    // String mychild = dataSnapshot.getValue().toString();
-                    // textView.setText(mychild);
-                    String mychild = dataSnapshot.getValue().toString();
-
-                    if(mychild.equals("1")){
-                        activity = captainDatabase.getAllActivitySetting();
-                        if (activity.equals("1")) {
-                            Intent intent = new Intent(CaptainMapsActivity.this, CaptainMapsActivity.class);
-                            showNotification(CaptainMapsActivity.this, "Captain App \n I Need My Car ", "لديك طلبات لارجاع السيارة الى الزبون", intent);
-                            importJson.GetReturnOrdersNo();
-                            UpdateInFireBaseCaptainReturn("0");
-                        }
-
-                    }
-                  //  Toast.makeText(CaptainMapsActivity.this, "succ " + mychild, Toast.LENGTH_SHORT).show();
-
-                }catch (Exception y){
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        };
-        query5.addValueEventListener(listener5);
+//        Query query5 = databaseReference.child("ValetAppRealDB").child("StatusValetGroup").child(singUpUserTableGlobal.getId() + "_VALET").child("ifReturn");
+//
+//        ValueEventListener listener5 = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                try {
+//                    // String mychild = dataSnapshot.getValue().toString();
+//                    // textView.setText(mychild);
+//                    String mychild = dataSnapshot.getValue().toString();
+//
+//                    if (mychild.equals("1")) {
+//                        activity = captainDatabase.getAllActivitySetting();
+//                        if (activity.equals("1")) {
+//                            Intent intent = new Intent(CaptainMapsActivity.this, CaptainMapsActivity.class);
+//                            showNotification(CaptainMapsActivity.this, "Captain App \n I Need My Car ", "لديك طلبات لارجاع السيارة الى الزبون", intent);
+//                            importJson.GetReturnOrdersNo();
+//                            UpdateInFireBaseCaptainReturn("0");
+//                        }
+//
+//                    }
+//                    //  Toast.makeText(CaptainMapsActivity.this, "succ " + mychild, Toast.LENGTH_SHORT).show();
+//
+//                } catch (Exception y) {
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        };
+//        query5.addValueEventListener(listener5);
 
 
         goneDeleteLin.setOnClickListener(new View.OnClickListener() {
@@ -436,12 +486,13 @@ String activity="";
 
                 captainDatabase.delete();
                 deleteCaptain();
-                flag=false;
-                getFlag=true;
-                try{
+                flag = false;
+                getFlag = true;
+                try {
                     mMap.clear();
                     LatLngListMarker.clear();
-                }catch (Exception e){}
+                } catch (Exception e) {
+                }
                 deleteLinear.setVisibility(View.GONE);
 
             }
@@ -451,23 +502,23 @@ String activity="";
             @Override
             public void onClick(View v) {
 
-                if(!TextUtils.isEmpty(hour.getText().toString())){
-                    if(!TextUtils.isEmpty(min.getText().toString())){
-                        if(!TextUtils.isEmpty(sec.getText().toString())){
+                if (!TextUtils.isEmpty(hour.getText().toString())) {
+                    if (!TextUtils.isEmpty(min.getText().toString())) {
+                        if (!TextUtils.isEmpty(sec.getText().toString())) {
 
-                            String hours = String.format("%02d",Integer.parseInt(hour.getText().toString()));
-                            String mins = String.format("%02d",Integer.parseInt(min.getText().toString()));
-                            String secs = String.format("%02d",Integer.parseInt(sec.getText().toString()));
-                            String time=hours+":"+mins+":"+secs;
-                            exportJson.updateTransferArriveTime(CaptainMapsActivity.this,time);
+                            String hours = String.format("%02d", Integer.parseInt(hour.getText().toString()));
+                            String mins = String.format("%02d", Integer.parseInt(min.getText().toString()));
+                            String secs = String.format("%02d", Integer.parseInt(sec.getText().toString()));
+                            String time = hours + ":" + mins + ":" + secs;
+                            exportJson.updateTransferArriveTime(CaptainMapsActivity.this, time);
 
-                        }else {
+                        } else {
                             sec.setError("Required");
                         }
-                    }else {
+                    } else {
                         min.setError("Required");
                     }
-                }else {
+                } else {
                     hour.setError("Required");
                 }
             }
@@ -484,29 +535,29 @@ String activity="";
         arriveToClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exportJson.updateStatus(CaptainMapsActivity.this,"5","6");
+                exportJson.updateStatus(CaptainMapsActivity.this, "5", "6");
             }
         });
 
         CUSTOMER_RECEIVED.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exportJson.updateStatus(CaptainMapsActivity.this,"5","6");
+                exportJson.updateStatus(CaptainMapsActivity.this, "5", "6");
             }
         });
 
         parkingCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flags=2;
+                flags = 2;
 
-                if ( Build.VERSION.SDK_INT >= 23){
+                if (Build.VERSION.SDK_INT >= 23) {
                     if (ActivityCompat.checkSelfPermission(CaptainMapsActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
-                            PackageManager.PERMISSION_GRANTED  ){
+                            PackageManager.PERMISSION_GRANTED) {
                         requestPermissions(new String[]{
                                         android.Manifest.permission.ACCESS_FINE_LOCATION},
                                 REQUEST_CODE_ASK_PERMISSIONS);
-                        return ;
+                        return;
                     }
                 }
 
@@ -521,42 +572,41 @@ String activity="";
         direction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flags=1;
+                flags = 1;
 
-                if ( Build.VERSION.SDK_INT >= 23){
+                if (Build.VERSION.SDK_INT >= 23) {
                     if (ActivityCompat.checkSelfPermission(CaptainMapsActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
-                            PackageManager.PERMISSION_GRANTED  ){
+                            PackageManager.PERMISSION_GRANTED) {
                         requestPermissions(new String[]{
                                         android.Manifest.permission.ACCESS_FINE_LOCATION},
                                 REQUEST_CODE_ASK_PERMISSIONS);
-                        return ;
+                        return;
                     }
                 }
 
-               // getLocation();
+                // getLocation();
 
                 Directions();
 
             }
 
-                //lat/lng: (27.44687331582928,33.19101959466934)
+            //lat/lng: (27.44687331582928,33.19101959466934)
 
         });
-
 
 
         directionR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flags=1;
+                flags = 1;
 
-                if ( Build.VERSION.SDK_INT >= 23){
+                if (Build.VERSION.SDK_INT >= 23) {
                     if (ActivityCompat.checkSelfPermission(CaptainMapsActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
-                            PackageManager.PERMISSION_GRANTED  ){
+                            PackageManager.PERMISSION_GRANTED) {
                         requestPermissions(new String[]{
                                         android.Manifest.permission.ACCESS_FINE_LOCATION},
                                 REQUEST_CODE_ASK_PERMISSIONS);
-                        return ;
+                        return;
                     }
                 }
 
@@ -575,15 +625,15 @@ String activity="";
             public void onClick(View v) {
 
 
-                Log.e("carReturn","carReturn == ");
-                if(isStall) {
-                    if(linearReturn.getVisibility()==View.GONE) {
+                Log.e("carReturn", "carReturn == ");
+                if (isStall) {
+                    if (linearReturn.getVisibility() == View.GONE) {
                         importJson.GetReturnOrders();
-                    }else if(linearReturn.getVisibility()==View.VISIBLE){
+                    } else if (linearReturn.getVisibility() == View.VISIBLE) {
                         linearReturn.setVisibility(View.GONE);
                     }
 
-                }else{
+                } else {
                     Toast.makeText(CaptainMapsActivity.this, "Please Finish Your Work Before", Toast.LENGTH_SHORT).show();
                 }
 
@@ -593,7 +643,7 @@ String activity="";
         arriveToClientReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exportJson.updateStatus(CaptainMapsActivity.this,"11","12");
+                exportJson.updateStatus(CaptainMapsActivity.this, "11", "12");
 
             }
         });
@@ -610,7 +660,7 @@ String activity="";
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exportJson.updateStatus(CaptainMapsActivity.this,"14","15");
+                exportJson.updateStatus(CaptainMapsActivity.this, "14", "15");
             }
         });
 
@@ -624,8 +674,8 @@ String activity="";
     }
 
 
-    void ParkingLoc(){
-         locationManager = (LocationManager) CaptainMapsActivity.this.getSystemService(Context.LOCATION_SERVICE);
+    void ParkingLoc() {
+        locationManager = (LocationManager) CaptainMapsActivity.this.getSystemService(Context.LOCATION_SERVICE);
         String locationProvider = LocationManager.NETWORK_PROVIDER;
         // I suppressed the missing-permission warning because this wouldn't be executed in my
         // case without location services being enabled
@@ -658,56 +708,56 @@ String activity="";
 //            LatLngListMarker.clear();
 //        }catch (Exception e){}
 
-        exportJson.updateStatusParking(CaptainMapsActivity.this,"7","8",""+latLng);
+        exportJson.updateStatusParking(CaptainMapsActivity.this, "7", "8", "" + latLng);
 
     }
-    void Directions(){
-        String a=clientLocation.replace("lat/lng:","").replace("(","").replace(")","").replace(" ","");
 
-        Log.e("hh",""+a);
+    void Directions() {
+        String a = clientLocation.replace("lat/lng:", "").replace("(", "").replace(")", "").replace(" ", "");
 
-        String[] latLong =a.split(",");
-        Log.e("hh[] = ",""+latLong[0]+"/"+latLong[1]);
-        Uri gmmIntentUri = Uri.parse("google.navigation:q="+latLong[0]+","+latLong[1] + "&mode=d");
-        Intent mapIntent =new  Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        Log.e("hh", "" + a);
+
+        String[] latLong = a.split(",");
+        Log.e("hh[] = ", "" + latLong[0] + "/" + latLong[1]);
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + latLong[0] + "," + latLong[1] + "&mode=d");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
-        }else {
+        } else {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                    Uri.parse("http://maps.google.com/maps?daddr="+latLong[0]+","+latLong[1]));
+                    Uri.parse("http://maps.google.com/maps?daddr=" + latLong[0] + "," + latLong[1]));
             startActivity(intent);
         }
     }
 
 
-    String[] locationClient(){
-        String a=clientLocation.replace("lat/lng:","").replace("(","").replace(")","").replace(" ","");
+    String[] locationClient() {
+        String a = clientLocation.replace("lat/lng:", "").replace("(", "").replace(")", "").replace(" ", "");
 
-        Log.e("hh",""+a);
+        Log.e("hh", "" + a);
 
-        String[] latLong =a.split(",");
-        Log.e("hh[] = ",""+latLong[0]+"/"+latLong[1]);
-
+        String[] latLong = a.split(",");
+        Log.e("hh[] = ", "" + latLong[0] + "/" + latLong[1]);
 
 
         try {
             LatLng lat = new LatLng(Double.parseDouble(latLong[0]), Double.parseDouble(latLong[1]));
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lat, 20));
-        }catch (Exception e){
-           // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10));
+        } catch (Exception e) {
+            // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 10));
         }
 
-        return  latLong;
+        return latLong;
 
 
     }
 
 
-    View.OnClickListener onClickListener=new View.OnClickListener() {
+    View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
 //                case R.id.requestButton:
 //                   //barcodeOpen(); progress dialog
 ////                    if(LatLngListMarker.size()==1) {
@@ -728,7 +778,7 @@ String activity="";
 
     public void readBarCode() {
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA ) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             //Log.d("","Permission not available requesting permission");
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_USE_CAMERA);
@@ -739,7 +789,7 @@ String activity="";
 
     }
 
-    public void barcodeReadPer(){
+    public void barcodeReadPer() {
         //        barCodTextTemp = itemCodeText;
         Log.e("barcode_099", "in");
         IntentIntegrator intentIntegrator = new IntentIntegrator(CaptainMapsActivity.this);
@@ -755,63 +805,86 @@ String activity="";
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            IntentResult Result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-            if (Result != null) {
-                if (Result.getContents() == null) {
-                    Log.d("MainActivity", "cancelled scan");
-                    Toast.makeText(this, "cancelled", Toast.LENGTH_SHORT).show();
+        IntentResult Result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (Result != null) {
+            if (Result.getContents() == null) {
+                Log.d("MainActivity", "cancelled scan");
+                Toast.makeText(this, "cancelled", Toast.LENGTH_SHORT).show();
 //                TostMesage(getResources().getString(R.string.cancel));
+            } else {
+
+                Log.e("MainActivity", "" + Result.getContents());
+                Toast.makeText(this, "Scan ___" + Result.getContents(), Toast.LENGTH_SHORT).show();
+
+
+                if (clientId.equals(Result.getContents())) {
+                    exportJson.updateStatus(CaptainMapsActivity.this, "12", "13");
                 } else {
-
-                    Log.e("MainActivity", "" + Result.getContents());
-                    Toast.makeText(this, "Scan ___" + Result.getContents(), Toast.LENGTH_SHORT).show();
-
-
-                    if(clientId.equals(Result.getContents())){
-                        exportJson.updateStatus(CaptainMapsActivity.this,"12","13");
-                    }else {
-                        SweetAlertDialog sweetAlertDialog=    new SweetAlertDialog(CaptainMapsActivity.this, SweetAlertDialog.SUCCESS_TYPE);
-                    sweetAlertDialog  .setTitleText("Barcode Reader");
-                    sweetAlertDialog .setContentText("This Not Same Client ");
-                    sweetAlertDialog  .setConfirmText("Ok");
+                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(CaptainMapsActivity.this, SweetAlertDialog.SUCCESS_TYPE);
+                    sweetAlertDialog.setTitleText("Barcode Reader");
+                    sweetAlertDialog.setContentText("This Not Same Client ");
+                    sweetAlertDialog.setConfirmText("Ok");
                     sweetAlertDialog.setCanceledOnTouchOutside(false);
-                    sweetAlertDialog  .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @SuppressLint("WrongConstant")
-                                @Override
-                                public void onClick(SweetAlertDialog sDialog) {
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @SuppressLint("WrongConstant")
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
 
-                                    sDialog.dismissWithAnimation();
-                                }
-                            });
+                            sDialog.dismissWithAnimation();
+                        }
+                    });
                     sweetAlertDialog.show();
-                    }
-
-
+                }
 
 
 //
 //                    Log.e("SweetAlertDialog 724", "" + "JSONTask");
-                }
-
-
-            } else {
-                super.onActivityResult(requestCode, resultCode, data);
             }
 
+
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
 
 
     }
 
 
-    void tracking(String v, String v3){
+    void trackingFire(String lat, String lng,String fromLa,String fromLn) {
+        try {
+            mMap.clear();
+
+        } catch (Exception e) {
+
+        }
+        double d1 = Double.parseDouble(lat);
+        double d2 = Double.parseDouble(lng);
+        double fLa = Double.parseDouble(fromLa);
+        double fLn = Double.parseDouble(fromLn);
+
+        LatLng latLng = new LatLng(d1, d2);
+        // LatLng latLng2=new LatLng(a1,a2);
+        LatLngListMarker.clear();
+        LatLngListMarker.add(latLng);
+        // LatLngListMarker.add(latLng2);
+        location(1);
+        Polyline line = mMap.addPolyline(new PolylineOptions()
+                .add(new LatLng((fLa), (fLn)), new LatLng(d1, d2))
+                .width(3)
+                .color(Color.RED));
+
+    }
+
+
+    void tracking(String v, String v3) {
         timer = new Timer();
-        v1=Double.parseDouble(v);
-        v2=Double.parseDouble(v3);
+        v1 = Double.parseDouble(v);
+        v2 = Double.parseDouble(v3);
         timer.schedule(new TimerTask() {
 
             @Override
             public void run() {
-                if(flag){
+                if (flag) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
@@ -819,19 +892,19 @@ String activity="";
                             try {
                                 mMap.clear();
 
-                            }catch (Exception e){
+                            } catch (Exception e) {
 
                             }
 
-                            v1=v1+0.000010;
-                            v2=v2+0.000050;
+                            v1 = v1 + 0.000010;
+                            v2 = v2 + 0.000050;
 
-                            Log.e("Location","loc"+v1+"  "+v2+"   "+a1+"   "+a2);
-                            LatLng latLng=new LatLng(v1,v2);
-                           // LatLng latLng2=new LatLng(a1,a2);
+                            Log.e("Location", "loc" + v1 + "  " + v2 + "   " + a1 + "   " + a2);
+                            LatLng latLng = new LatLng(v1, v2);
+                            // LatLng latLng2=new LatLng(a1,a2);
                             LatLngListMarker.clear();
                             LatLngListMarker.add(latLng);
-                           // LatLngListMarker.add(latLng2);
+                            // LatLngListMarker.add(latLng2);
                             location(1);
                             Polyline line = mMap.addPolyline(new PolylineOptions()
                                     .add(new LatLng(Double.parseDouble(v), Double.parseDouble(v3)), new LatLng(v1, v2))
@@ -847,40 +920,40 @@ String activity="";
 
         }, 0, 1000);
     }
-    void openProgressDialog(){
+
+    void openProgressDialog() {
         pdaSweet = new SweetAlertDialog(CaptainMapsActivity.this, SweetAlertDialog.PROGRESS_TYPE);
         pdaSweet.getProgressHelper().setBarColor(Color.parseColor("#FDD835"));
         pdaSweet.setTitleText("Process...");
         pdaSweet.setCancelable(false);
         pdaSweet.show();
 
-for (int i=0;i<300000000;i++){
+        for (int i = 0; i < 300000000; i++) {
 
-}
-pdaSweet.dismissWithAnimation();
+        }
+        pdaSweet.dismissWithAnimation();
 
 //openDialogOfCaption();
 
     }
 
-    public void generatorQRCode(){
+    public void generatorQRCode() {
 
         try {
 
 
             Random r = new Random();
-             randomNumber = r.nextInt(999999999) ; //String.format("%05d", r.nextInt(99999));
+            randomNumber = r.nextInt(999999999); //String.format("%05d", r.nextInt(99999));
 
-            Log.e("randomNumber",""+randomNumber);
+            Log.e("randomNumber", "" + randomNumber);
 
-            writeInFireBaseCaptainTime(clientId,singUpUserTableGlobal.getId()+"/"+randomNumber);
-
-
-            String qrData = singUpUserTableGlobal.getId()+"/"+randomNumber;
+            writeInFireBaseCaptainTime(clientId, singUpUserTableGlobal.getId() + "/" + randomNumber);
 
 
+            String qrData = singUpUserTableGlobal.getId() + "/" + randomNumber;
 
-            Bitmap bitmaps = encodeAsBitmap(""+qrData, BarcodeFormat.QR_CODE, 200, 200);
+
+            Bitmap bitmaps = encodeAsBitmap("" + qrData, BarcodeFormat.QR_CODE, 200, 200);
             barcode.setImageBitmap(bitmaps);
             regenaratQr.setVisibility(View.GONE);
             barcode.setVisibility(View.VISIBLE);
@@ -902,9 +975,9 @@ pdaSweet.dismissWithAnimation();
             }
 
             public void onFinish() {
-            //    mTextField.setText("done!");
-               regenaratQr.setVisibility(View.VISIBLE);
-               barcode.setVisibility(View.GONE);
+                //    mTextField.setText("done!");
+                regenaratQr.setVisibility(View.VISIBLE);
+                barcode.setVisibility(View.GONE);
             }
 
         }.start();
@@ -924,6 +997,7 @@ pdaSweet.dismissWithAnimation();
     private double deg2rad(double deg) {
         return (deg * Math.PI / 180.0);
     }
+
     private double rad2deg(double rad) {
         return (rad * 180.0 / Math.PI);
     }
@@ -1015,6 +1089,7 @@ pdaSweet.dismissWithAnimation();
 //        });
 //        dialog.show();
 //    }
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -1114,12 +1189,20 @@ pdaSweet.dismissWithAnimation();
 
         try {
 
-            if(move==1){
+            if (move == 1) {
 
-                        mMap.clear();
+                mMap.clear();
             }
-        }catch (Exception e){
-            Log.e("Problem","problennnn"+e.getMessage());
+        } catch (Exception e) {
+            Log.e("Problem", "problennnn" + e.getMessage());
+        }
+
+        if (move == 0) {
+            Location location = getLastKnownLocation();
+            v1 = location.getLatitude();
+            v2 = location.getLongitude();
+            LatLngListMarker.clear();
+            LatLngListMarker.add(new LatLng(v1, v2));
         }
 
         // Add a marker in Sydney and move the camera
@@ -1128,41 +1211,81 @@ pdaSweet.dismissWithAnimation();
         builder = new LatLngBounds.Builder();
 
 
-
         for (int i = 0; i < LatLngListMarker.size(); i++) {
 
             //if (!salesManInfosList.get(i).getLatitudeLocation().equals("0") && !salesManInfosList.get(i).getLongitudeLocation().equals("0")) {
-                sydney = LatLngListMarker.get(i);
+            sydney = LatLngListMarker.get(i);
 
-                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(iconSize())).position(sydney).title("aaa"));
-                builder.include(sydney);
+            mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(iconSize())).position(sydney).title("My Location"));
+            builder.include(sydney);
             //}
         }
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 //        mMap.animateCamera(CameraUpdateFactory.newLatLng(sydney));
-        if(move==0) {
+        if (move == 0) {
             try {
                 bounds = builder.build();
                 CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, 20);
                 mMap.animateCamera(cu);
-            }catch (Exception e){
+            } catch (Exception e) {
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 20));
             }
         }
-        flag=true;
+        flag = true;
 //        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 0));
     }
 
+    public void listOfClient2() {
+        tempApp.clear();
+        for (int i = 0; i < captainClientTransfers.size(); i++) {
+            String a = captainClientTransfers.get(i).getCaptainClientTransfer().getToLocation().replace("lat/lng:", "").replace("(", "").replace(")", "").replace(" ", "");
 
-    public void listOfClient(){
+            Log.e("hh", "" + a);
+
+            float[] f = new float[1];
+            String[] latLong = a.split(",");
+            Log.e("Location_1", " " + latLong[0] + " " + latLong[1]);
+            Log.e("Location_2", " " + v1 + " " + v2);
+
+
+            Location.distanceBetween(Double.parseDouble(latLong[0]), Double.parseDouble(latLong[1]), v1, v2, f);
+            Log.e("Location", "" + (f[0] / 1000));
+            double decKm = f[0] / 1000;
+            if (decKm <= 1) {
+                tempApp.add(captainClientTransfers.get(i));
+                Log.e("Location_3", " true" + " " + decKm + "   " + tempApp.size());
+            } else {
+                Log.e("Location_4", " false" + " " + decKm + "  " + captainClientTransfers.size() + "  " + tempApp.size());
+
+                // captainClientTransfers.remove(i);
+                Log.e("Location_5", " false" + " " + decKm + "  " + captainClientTransfers.size() + "  " + tempApp.size());
+
+            }
+
+        }
+
+        if (tempApp.size() != 0) {
+            listOfClient();
+        } else {
+            listOfClientClearTemp();
+        }
+//            Location.distanceBetween(captainClientTransfers.get(0));
+
+    }
+
+
+    public void listOfClient() {
         listAvilable(1);
-      //  _1DialogLocation.setVisibility(View.VISIBLE);
+        //  _1DialogLocation.setVisibility(View.VISIBLE);
 //        if( _1DialogLocation.getVisibility()==View.GONE) {
-            listAdapterOrder = new ListAdapterOrder(CaptainMapsActivity.this, captainClientTransfers);
-            orderList.setAdapter(listAdapterOrder);
-        Intent intent =new Intent(CaptainMapsActivity.this,CaptainMapsActivity.class);
-        showNotification(CaptainMapsActivity.this," I Need Captain ","Client Need Captain",intent);
-            Log.e("hhh12","hj");
+        listAdapterOrder = new ListAdapterOrder(CaptainMapsActivity.this, tempApp);
+        orderList.setAdapter(listAdapterOrder);
+//        Intent intent = new Intent(CaptainMapsActivity.this, CaptainMapsActivity.class);
+//        showNotification(CaptainMapsActivity.this, " I Need Captain ", "Client Need Captain", intent);
+//        Log.e("hhh12", "hj");
+
+//            Location.distanceBetween(captainClientTransfers.get(0));
+
 //
 //        }else {
 //            listAdapterOrder.notifyDataSetChanged();
@@ -1171,7 +1294,7 @@ pdaSweet.dismissWithAnimation();
 //        }
     }
 
-    public void listOfClientClear(){
+    public void listOfClientClear() {
         listAvilable(0);
 
         listAdapterOrder = new ListAdapterOrder(CaptainMapsActivity.this, captainClientTransfers);
@@ -1179,19 +1302,28 @@ pdaSweet.dismissWithAnimation();
 
     }
 
-    public void listOfReturn(){
+
+    public void listOfClientClearTemp() {
+        listAvilable(0);
+
+        listAdapterOrder = new ListAdapterOrder(CaptainMapsActivity.this, tempApp);
+        orderList.setAdapter(listAdapterOrder);
+
+    }
+
+    public void listOfReturn() {
         linearReturn.setVisibility(View.VISIBLE);
         //  _1DialogLocation.setVisibility(View.VISIBLE);
-        listAdapterReturn=new ListAdapterReturn(CaptainMapsActivity.this,captainClientReturn);
+        listAdapterReturn = new ListAdapterReturn(CaptainMapsActivity.this, captainClientReturn);
         returnCar.setAdapter(listAdapterReturn);
     }
 
 
-    public void  listAvilable(int i){
+    public void listAvilable(int i) {
 
 
-        switch (i){
-            case  0:
+        switch (i) {
+            case 0:
                 _1DialogLocation.setVisibility(View.GONE);
                 _2DialogLocation.setVisibility(View.GONE);
                 _3DialogLocation.setVisibility(View.GONE);
@@ -1204,12 +1336,12 @@ pdaSweet.dismissWithAnimation();
                 _11DialogLocation.setVisibility(View.GONE);
                 _151DialogLocation.setVisibility(View.GONE);
                 deleteLinear.setVisibility(View.GONE);
-                getFlag=true;
-                isStall=true;
-flag=false;
+                getFlag = true;
+                isStall = true;
+                flag = false;
                 break;
             case 1:
-                if( _1DialogLocation.getVisibility()==View.GONE) {
+                if (_1DialogLocation.getVisibility() == View.GONE) {
                     _1DialogLocation.setVisibility(View.VISIBLE);
                     _2DialogLocation.setVisibility(View.GONE);
                     _3DialogLocation.setVisibility(View.GONE);
@@ -1223,8 +1355,8 @@ flag=false;
                 }
                 break;
             case 2:
-                if( _2DialogLocation.getVisibility()==View.GONE) {
-                _2DialogLocation.setVisibility(View.VISIBLE);
+                if (_2DialogLocation.getVisibility() == View.GONE) {
+                    _2DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _3DialogLocation.setVisibility(View.GONE);
                     _4DialogLocation.setVisibility(View.GONE);
@@ -1237,7 +1369,7 @@ flag=false;
                 }
                 break;
             case 3:
-                if( _3DialogLocation.getVisibility()==View.GONE) {
+                if (_3DialogLocation.getVisibility() == View.GONE) {
                     _3DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _2DialogLocation.setVisibility(View.GONE);
@@ -1251,7 +1383,7 @@ flag=false;
                 }
                 break;
             case 4:
-                if( _4DialogLocation.getVisibility()==View.GONE) {
+                if (_4DialogLocation.getVisibility() == View.GONE) {
                     _4DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _2DialogLocation.setVisibility(View.GONE);
@@ -1265,7 +1397,7 @@ flag=false;
                 }
                 break;
             case 5:
-                if( _5DialogLocation.getVisibility()==View.GONE) {
+                if (_5DialogLocation.getVisibility() == View.GONE) {
                     _5DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _2DialogLocation.setVisibility(View.GONE);
@@ -1279,7 +1411,7 @@ flag=false;
                 }
                 break;
             case 6:
-                if( _6DialogLocation.getVisibility()==View.GONE) {
+                if (_6DialogLocation.getVisibility() == View.GONE) {
                     _6DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _2DialogLocation.setVisibility(View.GONE);
@@ -1294,7 +1426,7 @@ flag=false;
                 break;
 
             case 8:
-                if( _8DialogLocation.getVisibility()==View.GONE) {
+                if (_8DialogLocation.getVisibility() == View.GONE) {
                     _8DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _2DialogLocation.setVisibility(View.GONE);
@@ -1310,7 +1442,7 @@ flag=false;
 
 
             case 9:
-                if( _9DialogLocation.getVisibility()==View.GONE) {
+                if (_9DialogLocation.getVisibility() == View.GONE) {
                     _9DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _2DialogLocation.setVisibility(View.GONE);
@@ -1326,7 +1458,7 @@ flag=false;
 
 
             case 10:
-                if( _10DialogLocation.getVisibility()==View.GONE) {
+                if (_10DialogLocation.getVisibility() == View.GONE) {
                     _10DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _2DialogLocation.setVisibility(View.GONE);
@@ -1340,7 +1472,7 @@ flag=false;
                 }
                 break;
             case 11:
-                if( _11DialogLocation.getVisibility()==View.GONE) {
+                if (_11DialogLocation.getVisibility() == View.GONE) {
                     _11DialogLocation.setVisibility(View.VISIBLE);
                     _1DialogLocation.setVisibility(View.GONE);
                     _2DialogLocation.setVisibility(View.GONE);
@@ -1359,10 +1491,10 @@ flag=false;
     }
 
 
-    Bitmap iconSize(){
+    Bitmap iconSize() {
         int height = 100;
         int width = 100;
-        BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.car_icon);
+        BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.car_icon);
         Bitmap b = bitmapdraw.getBitmap();
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
 
@@ -1370,37 +1502,40 @@ flag=false;
     }
 
     public void ListShow(String id) {
+trackOn=false;
 
-
-        switch (id){
+        switch (id) {
 
             case "0":
                 importJson.GetOrders();
                 break;
 
             case "2":
-                isStall=false;
-                if(_2DialogLocation.getVisibility()==View.GONE) {
+                isStall = false;
+                if (_2DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                    isStall=false;
-                    getFlag=false;
+                    isStall = false;
+                    getFlag = false;
                     _2DialogLocation.setVisibility(View.VISIBLE);
                 }
                 break;
 
             case "3":
 
-                if(_3DialogLocation.getVisibility()==View.GONE) {
+                if (_3DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
                     hour.setText("00");
                     min.setText("00");
                     sec.setText("00");
-                    getFlag=false;
-                    flag=true;
+                    getFlag = false;
+                    flag = true;
                     try {
+
+                        trackOn=true;
                         String[] loc = locationClient();
                         tracking(loc[0], loc[1]);
-                    }catch (Exception r){
+
+                    } catch (Exception r) {
 
                     }
                     _3DialogLocation.setVisibility(View.VISIBLE);
@@ -1409,24 +1544,24 @@ flag=false;
 
             case "4":
 
-                if(_4DialogLocation.getVisibility()==View.GONE) {
+                if (_4DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                    getFlag=false;
+                    getFlag = false;
                     _4DialogLocation.setVisibility(View.VISIBLE);
                 }
                 break;
             case "151":
-                if(_151DialogLocation.getVisibility()==View.GONE) {
+                if (_151DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                    getFlag=false;
+                    getFlag = false;
                     //generatorQRCode();
                     _151DialogLocation.setVisibility(View.VISIBLE);
                 }
                 break;
             case "5":
-                if(_5DialogLocation.getVisibility()==View.GONE) {
+                if (_5DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                   getFlag=false;
+                    getFlag = false;
                     generatorQRCode();
                     _5DialogLocation.setVisibility(View.VISIBLE);
                 }
@@ -1434,23 +1569,23 @@ flag=false;
 
 
             case "6":
-                if(_6DialogLocation.getVisibility()==View.GONE) {
+                if (_6DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                    getFlag=false;
+                    getFlag = false;
                     _6DialogLocation.setVisibility(View.VISIBLE);
                 }
                 break;
 
             case "7":
                 listAvilable(0);
-              //  getFlag=false;
+                //  getFlag=false;
                 importJson.GetOrders();
                 break;
 
             case "9":
-                if(_8DialogLocation.getVisibility()==View.GONE) {
+                if (_8DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                    getFlag=false;
+                    getFlag = false;
                     _8DialogLocation.setVisibility(View.VISIBLE);
                 }
                 break;
@@ -1459,54 +1594,55 @@ flag=false;
 //                    listAvilable(0);
 //                    _9DialogLocation.setVisibility(View.VISIBLE);
 //                }
-                if(_5DialogLocation.getVisibility()==View.GONE) {
+                if (_5DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                  getFlag=false;
+                    getFlag = false;
                     generatorQRCode();
                     _5DialogLocation.setVisibility(View.VISIBLE);
                 }
                 break;
 
             case "12":
-                if(_10DialogLocation.getVisibility()==View.GONE) {
+                if (_10DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                    getFlag=false;
+                    getFlag = false;
                     _10DialogLocation.setVisibility(View.VISIBLE);
                 }
                 break;
             case "13":
-                if(_11DialogLocation.getVisibility()==View.GONE) {
+                if (_11DialogLocation.getVisibility() == View.GONE) {
                     listAvilable(0);
-                  getFlag=false;
+                    getFlag = false;
                     _11DialogLocation.setVisibility(View.VISIBLE);
                 }
                 break;
             case "14":
                 listAvilable(0);
-                getFlag=false;
+                getFlag = false;
                 importJson.GetOrders();
                 break;
             case "-1":
                 captainDatabase.delete();
                 deleteCaptain();
-                flag=false;
-                getFlag=true;
-                try{
+                flag = false;
+                getFlag = true;
+                try {
                     mMap.clear();
                     LatLngListMarker.clear();
-                }catch (Exception e){}
+                } catch (Exception e) {
+                }
                 importJson.GetOrders();
                 break;
 
             case "555":
-                if(deleteLinear.getVisibility()==View.GONE) {
+                if (deleteLinear.getVisibility() == View.GONE) {
                     listAvilable(0);
                     deleteLinear.setVisibility(View.VISIBLE);
                 }
 
                 break;
             case "666":
-                if(deleteLinear.getVisibility()==View.GONE) {
+                if (deleteLinear.getVisibility() == View.GONE) {
                     listAvilable(0);
                     deleteLinear.setVisibility(View.VISIBLE);
                 }
@@ -1524,44 +1660,40 @@ flag=false;
     }
 
 
+    void Call(String number) {
 
-    void Call (String number){
-
-       if(isPermissionGranted()){
+        if (isPermissionGranted()) {
             // You can use the API that requires the permission.
             CallPer();
-        }else {
-           Toast.makeText(this, "Please Enable Call Phone Permission", Toast.LENGTH_SHORT).show();
-       }
+        } else {
+            Toast.makeText(this, "Please Enable Call Phone Permission", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
 
 
-
-
-    public  boolean isPermissionGranted() {
+    public boolean isPermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.CALL_PHONE)
                     == PackageManager.PERMISSION_GRANTED) {
-                Log.v("TAG","Permission is granted");
+                Log.v("TAG", "Permission is granted");
                 return true;
             } else {
 
-                Log.v("TAG","Permission is revoked");
+                Log.v("TAG", "Permission is revoked");
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_PHONE_CALL);
                 return false;
             }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v("TAG","Permission is granted");
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("TAG", "Permission is granted");
             return true;
         }
     }
 
-    void CallPer(){
+    void CallPer() {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:"+clientPhoneNo));
+        callIntent.setData(Uri.parse("tel:" + clientPhoneNo));
         startActivity(callIntent);
     }
 
@@ -1570,19 +1702,19 @@ flag=false;
         switch (requestCode) {
             case REQUEST_CODE_ASK_PERMISSIONS:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(flags==1) {
+                    if (flags == 1) {
                         Directions();
-                    }else {
+                    } else {
                         ParkingLoc();
                     }
                 } else {
                     // Permission Denied
-                    Toast.makeText( this,"Please Enable Access to Location " , Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Please Enable Access to Location ", Toast.LENGTH_SHORT)
                             .show();
                 }
                 break;
 
-            case REQUEST_PHONE_CALL :
+            case REQUEST_PHONE_CALL:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     CallPer();
                 } else {
@@ -1593,65 +1725,67 @@ flag=false;
             case MY_PERMISSIONS_REQUEST_USE_CAMERA:
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                  //  Log.d(TAG,"permission was granted! Do your stuff");
+                    //  Log.d(TAG,"permission was granted! Do your stuff");
                     barcodeReadPer();
                 } else {
                     Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
-                   // Log.d(TAG,"permission denied! Disable the function related with permission.");
+                    // Log.d(TAG,"permission denied! Disable the function related with permission.");
                 }
                 break;
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
-    public void writeInFireBaseCaptain(ValetFireBaseItem valetFireBase){
-        ValetFireBaseItem valetFireBaseItem=valetFireBase;
-        db= FirebaseDatabase.getInstance();
-        databaseReference=db.getReference("ValetAppRealDB");
-        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId()+"_VALET").setValue(valetFireBaseItem).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+    public void writeInFireBaseCaptain(ValetFireBaseItem valetFireBase) {
+        ValetFireBaseItem valetFireBaseItem = valetFireBase;
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("ValetAppRealDB");
+        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId() + "_VALET").setValue(valetFireBaseItem).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-              //  Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void writeInFireBaseCaptainWay( String clientId){
-        db= FirebaseDatabase.getInstance();
-        databaseReference=db.getReference("ValetAppRealDB");
-        databaseReference.child("StatusValetGroup").child(clientId+"_CarInWay").setValue("1").addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void writeInFireBaseCaptainWay(String clientId) {
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("ValetAppRealDB");
+        databaseReference.child("StatusValetGroup").child(clientId + "_CarInWay").setValue("1").addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-              //  Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void writeInFireBaseCaptainTime( String clientId,String Qr){
-        db= FirebaseDatabase.getInstance();
-        databaseReference=db.getReference("ValetAppRealDB");
-        databaseReference.child("StatusValetGroup").child(clientId+"_QRCode").setValue(Qr).addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void writeInFireBaseCaptainTime(String clientId, String Qr) {
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("ValetAppRealDB");
+        databaseReference.child("StatusValetGroup").child(clientId + "_QRCode").setValue(Qr).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-             //   Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    public void UpdateInFireBaseCaptain(String valetFireBase){
-        db= FirebaseDatabase.getInstance();
-        databaseReference=db.getReference("ValetAppRealDB");
-        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId()+"_VALET").child("status").setValue(valetFireBase).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-           //     Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void UpdateInFireBaseCaptainReturn(String valetFireBase){
-        db= FirebaseDatabase.getInstance();
-        databaseReference=db.getReference("ValetAppRealDB");
-        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId()+"_VALET").child("ifReturn").setValue(valetFireBase).addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void UpdateInFireBaseCaptain(String valetFireBase) {
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("ValetAppRealDB");
+        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId() + "_VALET").child("status").setValue(valetFireBase).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                //     Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void UpdateInFireBaseCaptainReturn(String valetFireBase) {
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("ValetAppRealDB");
+        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId() + "_VALET").child("ifReturn").setValue(valetFireBase).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
@@ -1659,24 +1793,24 @@ flag=false;
         });
     }
 
-    public void UpdateInFireBaseClient(String status,String clientId){
-        db= FirebaseDatabase.getInstance();
-        databaseReference=db.getReference("ValetAppRealDB");
-        databaseReference.child("StatusValetGroup").child(clientId+"_Client").child("status").setValue(status).addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void UpdateInFireBaseClient(String status, String clientId) {
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("ValetAppRealDB");
+        databaseReference.child("StatusValetGroup").child(clientId + "_Client").child("status").setValue(status).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-             //  Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void deleteCaptain(){
-        db= FirebaseDatabase.getInstance();
-        databaseReference=db.getReference("ValetAppRealDB");
-        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId()+"_VALET").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void deleteCaptain() {
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("ValetAppRealDB");
+        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId() + "_VALET").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-             //   Toast.makeText(CaptainMapsActivity.this, "Successful Delete", Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(CaptainMapsActivity.this, "Successful Delete", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -1711,17 +1845,37 @@ flag=false;
         notificationManager.notify(notificationId, mBuilder.build());
     }
 
-    public void writeInFireBaseCaptainLate(){
-        db= FirebaseDatabase.getInstance();
-        databaseReference=db.getReference("ValetAppRealDB");
-        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId()+"_LATE").setValue("-1").addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void writeInFireBaseCaptainLate() {
+        db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("ValetAppRealDB");
+        databaseReference.child("StatusValetGroup").child(singUpUserTableGlobal.getId() + "_LATE").setValue("-1").addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-         //       Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                //       Toast.makeText(CaptainMapsActivity.this, "Successful", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+
+    private Location getLastKnownLocation() {
+        Location l = null;
+        LocationManager mLocationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+        List<String> providers = mLocationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                l = mLocationManager.getLastKnownLocation(provider);
+
+            }
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
+    }
 
 
 }

@@ -133,7 +133,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         app:srcCompat="@drawable/ic_baseline_star_rate_24"
                                         app:tint="@color/white_"
@@ -142,7 +142,7 @@
                                     <TextView
                                         android:id="@+id/textView31"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center"
                                         android:text="Rating "
@@ -151,7 +151,7 @@
                                     <TextView
                                         android:id="@+id/textView12"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center"
                                         android:text="3.5"
@@ -164,7 +164,7 @@
                                     android:layout_weight="0"
                                     android:background="@drawable/bac_green"
                                     android:gravity="center"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/white_2" />
 
                                 <LinearLayout
                                     android:id="@+id/parkingList"
@@ -176,7 +176,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         app:srcCompat="@drawable/ic_baseline_local_parking_24"
                                         app:tint="@color/white_"
@@ -185,7 +185,7 @@
                                     <TextView
                                         android:id="@+id/textView51"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center"
                                         android:text="in Parking "
@@ -194,7 +194,7 @@
                                     <TextView
                                         android:id="@+id/textView14"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center"
                                         android:text="25"
@@ -218,7 +218,7 @@
 
                                     <ImageView
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         app:srcCompat="@drawable/ic_baseline_directions_car_24"
                                         app:tint="@color/white_"
@@ -227,16 +227,16 @@
                                     <TextView
                                         android:id="@+id/textView71"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center"
-                                        android:text="compleated"
+                                        android:text="Complete"
                                         android:textColor="@color/white" />
 
                                     <TextView
-                                        android:id="@+id/textView61"
+                                        android:id="@+id/Complete"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center"
                                         android:text="30"

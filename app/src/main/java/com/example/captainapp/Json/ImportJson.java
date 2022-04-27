@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -60,6 +61,8 @@ import static com.example.captainapp.GlobalVairable.informationOfClints;
 import static com.example.captainapp.GlobalVairable.isOk;
 import static com.example.captainapp.GlobalVairable.singUpUserTableGlobal;
 
+import androidx.annotation.RequiresApi;
+
 
 public class ImportJson {
 SweetAlertDialog swALogIn,swACaptain,swAReturn;
@@ -76,6 +79,9 @@ String URL_TO_HIT="";
     }
     public  void getRaw(){
         new getRaw().execute();
+    }
+    public  void getComplete(){
+        new getCompleate().execute();
     }
 
 
@@ -206,6 +212,7 @@ String URL_TO_HIT="";
             return null;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
@@ -393,6 +400,115 @@ captainDatabase=new CaptainDatabase(context);
                     Toast.makeText(context, "User Name Or Password inCorrect", Toast.LENGTH_SHORT).show();
 
                     Log.e("onPostExecute", "" + s.toString());
+                }
+            }
+        }
+    }
+    private class getCompleate extends AsyncTask<String, String, String> {
+        private String JsonResponse = null;
+        private HttpURLConnection urlConnection = null;
+        private BufferedReader reader = null;
+
+        private String userName = "",password="";
+
+
+        public getCompleate() {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+//            swALogIn = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
+//            swALogIn.getProgressHelper().setBarColor(Color.parseColor("#FDD835"));
+//            swALogIn.setTitleText("PleaseWait" );
+//            swALogIn.setCancelable(false);
+//            swALogIn.show();
+            isOk=false;
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+
+                String ip=captainDatabase.getAllIPSetting();//192.168.1.101:81
+                String link = "http://"+ip+"/api/ValCaptain/getCompleate?";
+
+
+                String data = "idCapCompleat="+singUpUserTableGlobal.getId()+
+                        "&Nore=22";
+
+                URL url = new URL(link+data );
+
+
+//
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+//                httpURLConnection.setDoOutput(true);
+//                httpURLConnection.setDoInput(true);
+//                httpURLConnection.setRequestMethod("GET");
+//                DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
+//                wr.writeBytes(data);
+//                wr.flush();
+//                wr.close();
+                Log.e("url____",""+link+data);
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+                StringBuffer stringBuffer = new StringBuffer();
+
+                while ((JsonResponse = bufferedReader.readLine()) != null) {
+                    stringBuffer.append(JsonResponse + "\n");
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                Log.e("tag", "TAG_itemSwitch -->" + stringBuffer.toString());
+
+                return stringBuffer.toString();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (final IOException e) {
+                        Log.e("tag", "Error closing stream", e);
+                    }
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            // swALogIn.dismissWithAnimation();
+
+            isOk=true;
+            if (s != null) {
+                if (s != null) {
+                    if (s.contains("rating")) {
+                        String com=s.replace("rating =","").replace("\"","").replace(" ","");//"rating = 2";
+                        MainCaptainActivity mainCaptainActivity=(MainCaptainActivity)  context;
+                        mainCaptainActivity.completeText(com);
+                        Log.e("url____",""+com);
+                        isOk=true;
+                    } else {
+
+                        isOk=true;
+
+                    }
+                }else {
+                    isOk=true;
                 }
             }
         }
@@ -953,7 +1069,7 @@ captainDatabase=new CaptainDatabase(context);
                     captainClientTransfers= (List<CaptainClientTransfer>) enums;
                   //  Log.e( "captainClientTransfers "," = "+captainClientTransfers.get(0).getClients().getCAR_COLOR());
                     CaptainMapsActivity mainValetActivity = (CaptainMapsActivity) context;
-                    mainValetActivity.listOfClient();
+                    mainValetActivity.listOfClient2();
 
                     isOk=true;
                 } else {

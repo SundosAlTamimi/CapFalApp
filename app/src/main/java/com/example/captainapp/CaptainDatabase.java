@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class CaptainDatabase extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION =3;//version Db
+    private static final int DATABASE_VERSION =4;//version Db
     private static final String DATABASE_Name = "CaptainDBase";//name Db
 
     static SQLiteDatabase Idb;
@@ -24,6 +24,13 @@ public class CaptainDatabase extends SQLiteOpenHelper {
     private static final String IP_RAW = "IP_RAW";
     private static final String ACTIVITY = "ACTIVITY";
 
+    //___________________________________________________________________________________
+    private static final String USER_TABLE_SERVICE = "USER_TABLE_SERVICE";
+
+    private static final String USER_ID = "USER_ID";
+    private static final String USER_NAME = "USER_NAME";
+    private static final String PHONE_NO = "PHONE_NO";
+    private static final String ON_OFF_SERVICE = "ON_OFF_SERVICE";
 
 
     //_________________________________________________________________________________
@@ -46,6 +53,14 @@ public class CaptainDatabase extends SQLiteOpenHelper {
                 + IP_RAW + " NVARCHAR" + ","
                 + ACTIVITY + " NVARCHAR" + ")";
         Idb.execSQL(CREATE_TABLE_SETTING_IP);
+
+
+        String CREATE_TABLE_USER_TABLE = "CREATE TABLE " + USER_TABLE_SERVICE + "("
+                + USER_ID + " NVARCHAR" + ","
+                + USER_NAME + " NVARCHAR" + ","
+                + PHONE_NO + " NVARCHAR" + ","
+                + ON_OFF_SERVICE + " NVARCHAR" + ")";
+        Idb.execSQL(CREATE_TABLE_USER_TABLE);
 //=========================================================================================
 
 //=========================================================================================
@@ -68,6 +83,18 @@ try{
                     + IP_RAW + " NVARCHAR" + ","
                     + ACTIVITY + " NVARCHAR" + ")";
             Idb.execSQL(CREATE_TABLE_SETTING_IP);
+        }catch (Exception e){
+
+        }
+
+
+        try{
+            String CREATE_TABLE_USER_TABLE = "CREATE TABLE " + USER_TABLE_SERVICE + "("
+                    + USER_ID + " NVARCHAR" + ","
+                    + USER_NAME + " NVARCHAR" + ","
+                    + PHONE_NO + " NVARCHAR" + ","
+                    + ON_OFF_SERVICE + " NVARCHAR" + ")";
+            Idb.execSQL(CREATE_TABLE_USER_TABLE);
         }catch (Exception e){
 
         }
@@ -99,6 +126,20 @@ try{
             } while (cursor.moveToNext());
         }
         return idRaw;
+    }
+
+
+    public void addUserService(UserService userService) {
+        Idb = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(USER_ID,userService.getUserid() );
+        values.put(USER_NAME,userService.getUserName() );
+        values.put(PHONE_NO,userService.getUserPhoneNo() );
+        values.put(ON_OFF_SERVICE,userService.getOnOff() );
+
+        Idb.insert(USER_TABLE_SERVICE, null, values);
+        Idb.close();
     }
 
     public String getAllActivitySetting() {
@@ -190,5 +231,52 @@ try{
 
         values.put(ACTIVITY, ACTIVITYA);
         Idb.update(SETTING_IP_TABLE, values, IP_RAW + " = '" + ipOld + "'", null);
+    }
+
+
+    public String getAllUser() {
+
+        String selectQuery = "SELECT  * FROM " + USER_TABLE_SERVICE;
+        Idb = this.getWritableDatabase();
+        Cursor cursor = Idb.rawQuery(selectQuery, null);
+        String idRaw="";
+        if (cursor.moveToFirst()) {
+            do {
+
+                idRaw=cursor.getString(0);
+
+            } while (cursor.moveToNext());
+        }
+        return idRaw;
+    }
+
+    public String getAllUserOnOff() {
+
+        String selectQuery = "SELECT  * FROM " + USER_TABLE_SERVICE;
+        Idb = this.getWritableDatabase();
+        Cursor cursor = Idb.rawQuery(selectQuery, null);
+        String idRaw="";
+        if (cursor.moveToFirst()) {
+            do {
+
+                idRaw=cursor.getString(3);
+
+            } while (cursor.moveToNext());
+        }
+        return idRaw;
+    }
+
+    public void deleteUser() {
+        Idb= this.getWritableDatabase();
+        Idb.execSQL("DELETE FROM "+USER_TABLE_SERVICE); //delete all rows in a table
+        Idb.close();
+    }
+
+    public void updateUser(String idOld, String ac) {
+        Idb = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ON_OFF_SERVICE, ac);
+        Idb.update(USER_TABLE_SERVICE, values, USER_ID + " = '" + idOld + "'", null);
     }
 }

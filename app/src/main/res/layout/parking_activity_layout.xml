@@ -100,8 +100,7 @@
                             android:id="@+id/parkingListView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/bac_green_curv" />
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                 </LinearLayout>

@@ -4,6 +4,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class ProfileActivate extends AppCompatActivity implements View.OnClickLi
     CircleImageView proImg, idCImage, drivImage, perSecImage, licenseImage,
             _50Image, _300Image, healImage, CertiImage,prof2;
 
+    TextView user;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,7 @@ public class ProfileActivate extends AppCompatActivity implements View.OnClickLi
     private void initialization() {
         appActivate = "1";
 
+        user=findViewById(R.id.user);
         password = findViewById(R.id.password);
         userName = findViewById(R.id.userName);
         phoneNo = findViewById(R.id.phoneNo);
@@ -60,7 +63,7 @@ public class ProfileActivate extends AppCompatActivity implements View.OnClickLi
         userName.setText("" + singUpUserTableGlobal.getUserName());
         password.setText("" + singUpUserTableGlobal.getPASSWORD());
         phoneNo.setText("" + singUpUserTableGlobal.getPHONE_NO());
-
+        user.setText(""+singUpUserTableGlobal.getUserName());
     }
 
     @Override
